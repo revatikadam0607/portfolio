@@ -1,0 +1,13 @@
+.spark {
+  width: 5px;
+  height: 5px;
+  position: absolute;
+  background: var(--primary);
+  border-radius: 50%;
+  animation: fade 0.5s linear;
+}
+
+@keyframes fade {
+  from {opacity:1;}
+  to {opacity:0; transform: scale(3);}
+}

@@ -1,0 +1,14 @@
+button {
+  padding: 10px;
+  margin: 5px;
+  cursor: pointer;
+}
+
+.skills-btn {
+  background: #333;
+  color: white;
+}
+
+.skills-btn:hover {
+  background: var(--primary);
+}

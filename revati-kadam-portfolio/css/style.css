@@ -1,0 +1,227 @@
+:root {
+  --bg: #0f172a;
+  --text: #fff;
+  --primary: #3b82f6;
+  --card: #1e293b;
+  --sidebar: #020617;
+}
+
+body {
+  margin: 0;
+  font-family: Arial;
+  display: flex;
+  background: var(--bg);
+  color: var(--text);
+}
+
+/* Sidebar */
+.sidebar {
+  width: 250px;
+  height: 100vh;
+  background: var(--sidebar);
+  padding: 20px;
+  position: fixed;
+}
+
+.sidebar h2 {
+  color: var(--primary);
+}
+
+.sidebar li {
+  list-style: none;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.sidebar li:hover {
+  color: var(--primary);
+}
+
+/* Social */
+.social {
+  position: absolute;
+  bottom: 60px;
+}
+
+.social a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--text);
+  text-decoration: none;
+  margin: 5px 0;
+}
+
+.social img {
+  width: 20px;
+}
+
+/* Main */
+.main {
+  margin-left: 250px;
+  padding: 40px;
+}
+
+/* Sections */
+.section {
+  padding: 50px 0;
+}
+
+/* Headings */
+h2, #typing, a {
+  color: var(--primary);
+}
+
+/* Skills */
+#skills-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.skill-card {
+  width: 120px;
+  height: 120px;
+  background: var(--card);
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.skill-card img {
+  width: 40px;
+  height: 40px;
+  margin-bottom: 10px;
+}
+
+.skill-card p {
+  font-size: 14px;
+  margin: 0;
+  color: var(--text);
+}
+
+.skill-card:hover {
+  transform: scale(1.08);
+  background: var(--primary);
+  color: white;
+}
+
+.skill-card:hover p {
+  color: white;
+}
+
+/* Projects */
+#projects-container div {
+  background: var(--card);
+  padding: 15px;
+  margin: 10px 0;
+  border-radius: 10px;
+}
+
+/* Form */
+form input, form textarea {
+  display: block;
+  margin: 10px 0;
+  padding: 10px;
+  width: 300px;
+  background: var(--card);
+  border: none;
+  color: var(--text);
+}
+
+form button {
+  padding: 10px;
+  background: var(--primary);
+  border: none;
+  color: white;
+  border-radius: 6px;
+}
+
+/* Settings */
+.settings {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  cursor: pointer;
+}
+
+.menu {
+  display: none;
+  position: absolute;
+  bottom: 50px;
+  right: 0;
+  background: var(--card);
+  padding: 15px;
+  border-radius: 10px;
+}
+
+.menu.show {
+  display: block;
+}
+
+.color-options span {
+  width: 25px;
+  height: 25px;
+  display: inline-block;
+  border-radius: 4px;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.color-options span {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+/* ❤️ Heart Spark */
+.spark {
+  position: absolute;
+  width: 6px;              /* smaller */
+  height: 6px;
+  background: var(--primary);
+  transform: rotate(45deg);
+  pointer-events: none;
+  opacity: 0.9;
+}
+
+.spark::before,
+.spark::after {
+  content: "";
+  position: absolute;
+  width: 6px;              /* smaller */
+  height: 6px;
+  background: var(--primary);
+  border-radius: 50%;
+}
+
+.spark::before {
+  top: -3px;
+  left: 0;
+}
+
+.spark::after {
+  left: -3px;
+  top: 0;
+}
+.resume-btn {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 12px 18px;
+  background: var(--primary);
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: 0.3s;
+}
+
+.resume-btn:hover {
+  transform: scale(1.05);
+  opacity: 0.9;
+}

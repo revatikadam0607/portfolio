@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+  <meta charset="UTF-8">
+  <title>Revati Kadam Portfolio</title>
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- EmailJS -->
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+</head>
+
+<body>
+
+<div class="sidebar">
+  <h2>Revati Kadam</h2>
+
+  <ul>
+    <li onclick="showSection('home')">Home</li>
+    <li onclick="showSection('about')">About</li>
+    <li onclick="showSection('skills')">Skills</li>
+    <li onclick="showSection('projects')">Projects</li>
+    <li onclick="showSection('contact')">Contact</li>
+  </ul>
+
+  <div class="social">
+    <a href="https://github.com/revatikadam0607" target="_blank">
+      <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"> GitHub
+    </a>
+
+    <a href="https://www.linkedin.com/in/revati-kadam-41818a32a" target="_blank">
+      <img src="https://cdn-icons-png.flaticon.com/24/174/174857.png"> LinkedIn
+    </a>
+
+    <a href="https://leetcode.com/u/Revati0607/" target="_blank">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/1/19/LeetCode_logo_black.png"> LeetCode
+    </a>
+  </div>
+</div>
+
+<div class="main">
+
+<section id="home" class="section">
+  <h1>Hello!</h1>
+  <h1>I am Revati Kadam</h1>
+  <h2>I am a <span id="typing"></span></h2>
+</section>
+
+<section id="about" class="section">
+  <h2>About</h2>
+  <p>
+    I’m a passionate and driven Computer Science student with a strong interest in Web Development, Software Engineering, and problem-solving. I enjoy building clean, responsive, and user-friendly web applications while continuously improving my skills in technologies like HTML, CSS, JavaScript, and backend development. Alongside development, I actively practice Data Structures and Algorithms to strengthen my logical thinking and coding abilities. I enjoy learning new technologies, working on real-world projects, and turning ideas into practical solutions.
+
+  </p>
+  <a href="assets/resume/revati-kadam-resume.pdf" download class="resume-btn">
+  Download Resume
+</a>
+</section>
+
+<section id="skills" class="section">
+  <h2>Skills</h2>
+  <div id="skills-container"></div>
+</section>
+
+<section id="projects" class="section">
+  <h2>Projects</h2>
+  <div id="projects-container"></div>
+</section>
+
+<section id="contact" class="section">
+  <h2>Contact Me</h2>
+  <form id="contact-form">
+    <input type="text" name="name" placeholder="Full Name" required>
+    <input type="email" name="email" placeholder="Email" required>
+    <input type="text" name="subject" placeholder="Subject">
+    <textarea name="message" placeholder="Message" required></textarea>
+    <button type="submit">Send</button>
+  </form>
+</section>
+
+</div>
+
+<!-- Settings -->
+<div class="settings" onclick="toggleSettings()">
+  ⚙️
+  <div class="menu" id="settingsMenu">
+
+    <p>Theme</p>
+    <button onclick="setTheme('dark')">🌙</button>
+    <button onclick="setTheme('light')">☀️</button>
+
+    <p>Colors</p>
+    <div class="color-options">
+      <span style="background:#3b82f6" onclick="setColor('#3b82f6')"></span>
+      <span style="background:#22c55e" onclick="setColor('#22c55e')"></span>
+      <span style="background:#ec4899" onclick="setColor('#ec4899')"></span>
+      <span style="background:#f97316" onclick="setColor('#f97316')"></span>
+      <span style="background:#ef4444" onclick="setColor('#ef4444')"></span>
+    </div>
+
+  </div>
+</div>
+
+<script src="js/script.js"></script>
+</body>
+</html>

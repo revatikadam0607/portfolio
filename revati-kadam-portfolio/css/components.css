@@ -5,7 +5,7 @@ button {
 }
 
 .skills-btn {
-  background: #333;
+  background: var(--btn);
   color: white;
 }
 

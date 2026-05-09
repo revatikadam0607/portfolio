@@ -4,13 +4,15 @@
   --primary: #3b82f6;
   --card: #1e293b;
   --sidebar: #020617;
+  --btn: #333;
+  --secondary-bg: #1e293b;
 }
 
 /* ================= GLOBAL ================= */
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
-  background: linear-gradient(135deg, var(--bg), #020617);
+  background: linear-gradient(135deg, var(--bg), var(--secondary-bg));
   color: var(--text);
   scroll-behavior: smooth;
 }
@@ -19,7 +21,7 @@ body {
 .sidebar {
   width: 250px;
   height: 100vh;
-  background: rgba(15, 23, 42, 0.7);
+  background: var(--sidebar);
   backdrop-filter: blur(10px);
   padding: 20px;
   position: fixed;

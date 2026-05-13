@@ -30,6 +30,7 @@ type();
 
 // Theme
 function setTheme(mode){
+  // Apply CSS variables for the selected mode
   if(mode==="light"){
     document.documentElement.style.setProperty('--bg','#f8fafc');
     document.documentElement.style.setProperty('--text','#000');   // BLACK text
@@ -39,6 +40,26 @@ function setTheme(mode){
     document.documentElement.style.setProperty('--text','#fff');   // WHITE text
     document.documentElement.style.setProperty('--card','#1e293b');
   }
+  // Persist preference and update data attribute
+  document.documentElement.setAttribute('data-theme', mode);
+  localStorage.setItem('theme', mode);
+}
+
+// Initialize theme on page load
+const savedTheme = localStorage.getItem('theme') || 'light';
+setTheme(savedTheme);
+
+// Theme toggle button
+const themeToggleBtn = document.getElementById('theme-toggle');
+if (themeToggleBtn) {
+  themeToggleBtn.setAttribute('aria-pressed', savedTheme === 'dark');
+  themeToggleBtn.textContent = savedTheme === 'dark' ? '🌙' : '☀️';
+  themeToggleBtn.addEventListener('click', () => {
+    const newMode = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    setTheme(newMode);
+    themeToggleBtn.setAttribute('aria-pressed', newMode === 'dark');
+    themeToggleBtn.textContent = newMode === 'dark' ? '🌙' : '☀️';
+  });
 }
 
 // Color

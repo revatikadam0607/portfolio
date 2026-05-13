@@ -80,7 +80,7 @@ fetch("data/skills.json")
     card.className = "skill-card";
 
     card.innerHTML = `
-      <img src="${skillIcons[skill] || ''}" />
+      <img src="${skillIcons[skill] || ''}" alt="${skill} icon" />
       <p>${skill}</p>
     `;
 
@@ -118,7 +118,7 @@ fetch("data/projects.json")
 
     d.innerHTML = `
       <h3>${p.name}</h3>
-      <img src="${p.image}" width="300" onerror="this.src='https://via.placeholder.com/300'">
+      <img src="${p.image}" width="300" alt="${p.name} preview" onerror="this.src='https://via.placeholder.com/300?text=Project+Image'">
       <br>
       <a href="${p.live}" target="_blank">Live</a> |
       <a href="${p.github}" target="_blank">GitHub</a>

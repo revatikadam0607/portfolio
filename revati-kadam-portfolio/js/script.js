@@ -5,109 +5,88 @@ function showSection(id) {
 }
 
 // Typing
-const roles=["Programmer", "Student","Web Developer","Website Designer","Problem Solver","Tech Enthusiast"];
-let i=0,j=0,del=false;
+const roles = ["Programmer", "Student", "Web Developer", "Website Designer", "Problem Solver", "Tech Enthusiast"];
+let i = 0, j = 0, del = false;
 
-function type(){
-  let text=roles[i];
-  j=del?j-1:j+1;
+function type() {
+  let text = roles[i];
+  j = del ? j - 1 : j + 1;
 
-  document.getElementById("typing").innerText=text.substring(0,j);
+  document.getElementById("typing").innerText = text.substring(0, j);
 
-  if(!del && j===text.length){
-    del=true;
-    return setTimeout(type,1500);
+  if (!del && j === text.length) {
+    del = true;
+    return setTimeout(type, 1500);
   }
 
-  if(del && j===0){
-    del=false;
-    i=(i+1)%roles.length;
+  if (del && j === 0) {
+    del = false;
+    i = (i + 1) % roles.length;
   }
 
-  setTimeout(type,del?80:180);
+  setTimeout(type, del ? 80 : 180);
 }
 type();
 
 // Theme
-function setTheme(mode){
-  // Apply CSS variables for the selected mode
-  if(mode==="light"){
-    document.documentElement.style.setProperty('--bg','#f8fafc');
-    document.documentElement.style.setProperty('--text','#000');   // BLACK text
-    document.documentElement.style.setProperty('--card','#e2e8f0');
+function setTheme(mode) {
+  if (mode === "light") {
+    document.documentElement.style.setProperty('--bg', '#f8fafc');
+    document.documentElement.style.setProperty('--text', '#000');   // BLACK text
+    document.documentElement.style.setProperty('--card', '#e2e8f0');
   } else {
-    document.documentElement.style.setProperty('--bg','#0f172a');
-    document.documentElement.style.setProperty('--text','#fff');   // WHITE text
-    document.documentElement.style.setProperty('--card','#1e293b');
+    document.documentElement.style.setProperty('--bg', '#0f172a');
+    document.documentElement.style.setProperty('--text', '#fff');   // WHITE text
+    document.documentElement.style.setProperty('--card', '#1e293b');
   }
-  // Persist preference and update data attribute
-  document.documentElement.setAttribute('data-theme', mode);
-  localStorage.setItem('theme', mode);
-}
-
-// Initialize theme on page load
-const savedTheme = localStorage.getItem('theme') || 'light';
-setTheme(savedTheme);
-
-// Theme toggle button
-const themeToggleBtn = document.getElementById('theme-toggle');
-if (themeToggleBtn) {
-  themeToggleBtn.setAttribute('aria-pressed', savedTheme === 'dark');
-  themeToggleBtn.textContent = savedTheme === 'dark' ? '🌙' : '☀️';
-  themeToggleBtn.addEventListener('click', () => {
-    const newMode = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-    setTheme(newMode);
-    themeToggleBtn.setAttribute('aria-pressed', newMode === 'dark');
-    themeToggleBtn.textContent = newMode === 'dark' ? '🌙' : '☀️';
-  });
 }
 
 // Color
-function setColor(color){
-  document.documentElement.style.setProperty('--primary',color);
+function setColor(color) {
+  document.documentElement.style.setProperty('--primary', color);
 }
 
 // Settings
-function toggleSettings(){
+function toggleSettings() {
   document.getElementById("settingsMenu").classList.toggle("show");
 }
 
-document.addEventListener("click", function(e){
-  const settings=document.querySelector(".settings");
-  if(!settings.contains(e.target)){
+document.addEventListener("click", function (e) {
+  const settings = document.querySelector(".settings");
+  if (!settings.contains(e.target)) {
     document.getElementById("settingsMenu").classList.remove("show");
   }
 });
 
 // ❤️ Spark
-document.addEventListener("mousemove", e=>{
-  const s=document.createElement("div");
-  s.className="spark";
-  s.style.left=e.pageX+"px";
-  s.style.top=e.pageY+"px";
+document.addEventListener("mousemove", e => {
+  const s = document.createElement("div");
+  s.className = "spark";
+  s.style.left = e.pageX + "px";
+  s.style.top = e.pageY + "px";
   document.body.appendChild(s);
-  setTimeout(()=>s.remove(),100);
+  setTimeout(() => s.remove(), 100);
 });
 
 // Skills
 fetch("data/skills.json")
-.then(res => res.json())
-.then(data => {
-  const container = document.getElementById("skills-container");
-  container.innerHTML = "";
+  .then(res => res.json())
+  .then(data => {
+    const container = document.getElementById("skills-container");
+    container.innerHTML = "";
 
-  data.forEach(skill => {
-    const card = document.createElement("div");
-    card.className = "skill-card";
+    data.forEach(skill => {
+      const card = document.createElement("div");
+      card.className = "skill-card";
 
-    card.innerHTML = `
+      card.innerHTML = `
       <img src="${skillIcons[skill] || ''}" />
       <p>${skill}</p>
     `;
 
-    container.appendChild(card);
+      container.appendChild(card);
+    });
   });
-});
 const skillIcons = {
   "React": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
   "Node.js": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
@@ -128,16 +107,16 @@ const skillIcons = {
 
 // Projects
 fetch("data/projects.json")
-.then(res => res.json())
-.then(data => {
-  const c = document.getElementById("projects-container");
+  .then(res => res.json())
+  .then(data => {
+    const c = document.getElementById("projects-container");
 
-  c.innerHTML = ""; // clear first
+    c.innerHTML = ""; // clear first
 
-  data.forEach(p => {
-    let d = document.createElement("div");
+    data.forEach(p => {
+      let d = document.createElement("div");
 
-    d.innerHTML = `
+      d.innerHTML = `
       <h3>${p.name}</h3>
       <img src="${p.image}" width="300" onerror="this.src='https://via.placeholder.com/300'">
       <br>
@@ -145,44 +124,44 @@ fetch("data/projects.json")
       <a href="${p.github}" target="_blank">GitHub</a>
     `;
 
-    c.appendChild(d);
+      c.appendChild(d);
+    });
+  })
+  .catch(err => {
+    document.getElementById("projects-container").innerHTML = "Error loading projects";
   });
-})
-.catch(err => {
-  document.getElementById("projects-container").innerHTML = "Error loading projects";
-});
 // EMAILJS INIT (IMPORTANT)
-(function(){
+(function () {
   emailjs.init("YOUR_PUBLIC_KEY"); // replace
 })();
 
 // CONTACT FORM SEND
-document.getElementById("contact-form").addEventListener("submit", function(e){
+document.getElementById("contact-form").addEventListener("submit", function (e) {
   e.preventDefault();
 
   emailjs.sendForm("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", this)
-    .then(function(){
+    .then(function () {
       alert("Message sent successfully!");
       this.reset();
-     }).catch((error) => {
-    console.log("Error:", error);
-    alert("Failed to send message.");
-  });
+    }).catch((error) => {
+      console.log("Error:", error);
+      alert("Failed to send message.");
+    });
 });
 
 // Initialize EmailJS
-(function(){
+(function () {
   emailjs.init("kqnCcPYqtdwl_Oaqt");
 })();
 
 // Send form
-document.getElementById("contact-form").addEventListener("submit", function(e){
+document.getElementById("contact-form").addEventListener("submit", function (e) {
   e.preventDefault();
 
   emailjs.sendForm("service_08nkbcb", "template_2yrnipb", this)
-    .then(function(){
+    .then(function () {
       alert("Message sent successfully!");
-    }, function(error){
+    }, function (error) {
       alert("Failed to send message.");
     });
 });

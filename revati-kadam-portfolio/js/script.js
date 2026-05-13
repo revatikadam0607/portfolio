@@ -3,6 +3,9 @@ function showSection(id) {
   const section = document.getElementById(id);
   if (section) {
     section.scrollIntoView({ behavior: "smooth" });
+    // Update URL hash without jumping
+    history.pushState(null, null, `#${id}`);
+    updateActiveLink(id);
   }
 }
 
@@ -14,6 +17,49 @@ function toggleNavbar() {
   if (hamburger) {
     hamburger.setAttribute("aria-expanded", isExpanded);
   }
+}
+
+function updateActiveLink(id) {
+  const buttons = document.querySelectorAll(".nav-links li button");
+  buttons.forEach(btn => {
+    const onClick = btn.getAttribute("onclick");
+    if (onClick && onClick.includes(`'${id}'`)) {
+      btn.classList.add("active");
+    } else {
+      btn.classList.remove("active");
+    }
+  });
+}
+
+// Navbar Scroll Effect
+window.addEventListener("scroll", () => {
+  const navbar = document.querySelector(".navbar");
+  if (window.scrollY > 50) {
+    navbar.classList.add("scrolled");
+  } else {
+    navbar.classList.remove("scrolled");
+  }
+});
+
+// Section Observer for Active Links
+function initSectionObserver() {
+  const sections = document.querySelectorAll(".section");
+  const options = {
+    threshold: 0.6
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+        updateActiveLink(entry.target.id);
+      }
+    });
+  }, options);
+
+  sections.forEach(section => {
+    observer.observe(section);
+  });
 }
 
 // --- Typing Animation ---
@@ -80,6 +126,12 @@ document.addEventListener("click", function (e) {
   if (settings && !settings.contains(e.target)) {
     document.getElementById("settingsMenu").classList.remove("show");
   }
+
+  // Close nav on mobile if clicking link
+  const navLinks = document.getElementById("navLinks");
+  if (navLinks.classList.contains("show") && e.target.closest(".nav-links li button")) {
+    toggleNavbar();
+  }
 });
 
 document.addEventListener("mousemove", e => {
@@ -132,8 +184,8 @@ async function loadData() {
     if (projectsContainer) {
       projectsContainer.innerHTML = projects.map(p => `
         <div class="project-card">
+          <img src="${p.image}" alt="${p.name} preview" onerror="this.src='https://via.placeholder.com/350x220'">
           <h3>${p.name}</h3>
-          <img src="${p.image}" alt="${p.name} preview" width="300" onerror="this.src='https://via.placeholder.com/300'">
           <div class="project-links">
             <a href="${p.live}" target="_blank" rel="noopener noreferrer">Live Demo</a>
             <a href="${p.github}" target="_blank" rel="noopener noreferrer">GitHub</a>
@@ -184,5 +236,12 @@ document.addEventListener("DOMContentLoaded", () => {
   type();
   loadData();
   initContactForm();
+  initSectionObserver();
+
+  // Handle Initial Hash
+  const hash = window.location.hash.substring(1);
+  if (hash) {
+    setTimeout(() => showSection(hash), 500);
+  }
 });
 

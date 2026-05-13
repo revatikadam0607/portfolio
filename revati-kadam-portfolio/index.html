@@ -54,6 +54,7 @@
   <h1>Hello!</h1>
   <h1>I am Revati Kadam</h1>
   <h2>I am a <span id="typing"></span></h2>
+
 </section>
 
 <section id="about" class="section">
@@ -91,6 +92,87 @@
   </form>
 </section>
 
+  <!-- ================= FAQ SECTION ================= -->
+  <section id="faq" class="section">
+    <h2>Frequently Asked Questions</h2>
+    <div class="accordion">
+      <div class="accordion-item">
+        <button class="accordion-header" onclick="toggleAccordion(this)">
+          <span>🚀 What technologies do you specialize in?</span>
+          <span class="icon">+</span>
+        </button>
+        <div class="accordion-content">
+          <p>I specialize in Frontend development with HTML, CSS, JavaScript, and React. I also have experience with Node.js, Java, and Database Management.</p>
+        </div>
+      </div>
+      
+      <div class="accordion-item">
+        <button class="accordion-header" onclick="toggleAccordion(this)">
+          <span>📂 Are your projects open source?</span>
+          <span class="icon">+</span>
+        </button>
+        <div class="accordion-content">
+          <p>Yes! Most of my personal projects are available on GitHub. You can check the 'Documentation' or my GitHub profile for licenses.</p>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-header" onclick="toggleAccordion(this)">
+          <span>🤝 Are you open for internships or collaboration?</span>
+          <span class="icon">+</span>
+        </button>
+        <div class="accordion-content">
+          <p>Absolutely! I'm always looking for opportunities to learn and contribute. Feel free to reach out via the Contact form.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<!-- ================= FOOTER ================= -->
+<footer class="footer">
+  <div class="footer-content">
+    <div class="footer-section">
+      <h3>Quick Links</h3>
+      <ul>
+        <li><button onclick="showSection('home')">Home</button></li>
+        <li><button onclick="showSection('projects')">Projects</button></li>
+        <li><button onclick="showSection('contact')">Contact</button></li>
+      </ul>
+    </div>
+    
+    <div class="footer-section">
+      <h3>Resources</h3>
+      <ul>
+        <li><button onclick="openOverlay('privacy')">🛡️ Privacy Policy</button></li>
+        <li><button onclick="openOverlay('terms')">⚖️ Terms of Service</button></li>
+        <li><button onclick="openOverlay('docs')">📖 Documentation</button></li>
+        <li><button onclick="showSection('faq')">❓ FAQs</button></li>
+      </ul>
+    </div>
+
+    <div class="footer-section">
+      <h3>Connect</h3>
+      <div class="footer-socials">
+        <a href="https://github.com/revatikadam0607" target="_blank" aria-label="GitHub">GitHub</a>
+        <a href="https://www.linkedin.com/in/revati-kadam-41818a32a" target="_blank" aria-label="LinkedIn">LinkedIn</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2024 Revati Kadam. Built with Passion & Caffeine.</p>
+  </div>
+</footer>
+
+<!-- ================= OVERLAY SYSTEM ================= -->
+<div id="docs-overlay" class="overlay">
+  <div class="overlay-card">
+    <button class="close-btn" onclick="closeOverlay()">&times;</button>
+    <div id="overlay-content">
+      <!-- Content injected via JS -->
+    </div>
+  </div>
 </div>
 
 <!-- ================= SETTINGS ================= -->

@@ -488,3 +488,201 @@ form button:hover {
   }
 }
 
+/* ================= FOOTER ================= */
+.footer {
+  background: rgba(2, 6, 23, 0.95);
+  backdrop-filter: blur(10px);
+  padding: 4rem 10% 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  margin-top: 4rem;
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 3rem;
+  margin-bottom: 3rem;
+}
+
+.footer-section h3 {
+  color: var(--primary);
+  margin-bottom: 1.5rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-section ul li {
+  margin-bottom: 0.8rem;
+}
+
+.footer-section button {
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.7);
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.3s;
+  padding: 0;
+}
+
+.footer-section button:hover {
+  color: var(--primary);
+  transform: translateX(5px);
+}
+
+.footer-socials {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.footer-socials a {
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.footer-socials a:hover {
+  color: var(--primary);
+}
+
+.footer-bottom {
+  text-align: center;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  font-size: 0.9rem;
+  opacity: 0.5;
+}
+
+/* ================= ACCORDION (FAQ) ================= */
+.accordion {
+  max-width: 800px;
+  margin: 2rem 0;
+}
+
+.accordion-item {
+  background: rgba(30, 41, 59, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 1rem;
+  margin-bottom: 1rem;
+  overflow: hidden;
+  transition: all 0.3s;
+}
+
+.accordion-header {
+  width: 100%;
+  padding: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: left;
+}
+
+.accordion-header .icon {
+  font-size: 1.4rem;
+  transition: transform 0.3s;
+}
+
+.accordion-item.active .icon {
+  transform: rotate(45deg);
+}
+
+.accordion-content {
+  max-height: 0;
+  padding: 0 1.5rem;
+  overflow: hidden;
+  transition: all 0.3s ease-out;
+  opacity: 0;
+}
+
+.accordion-item.active .accordion-content {
+  max-height: 200px;
+  padding: 0 1.5rem 1.5rem;
+  opacity: 1;
+}
+
+/* ================= OVERLAY ================= */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(2, 6, 23, 0.8);
+  backdrop-filter: blur(12px);
+  z-index: 3000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.overlay.show {
+  display: flex;
+}
+
+.overlay-card {
+  background: var(--card);
+  width: 100%;
+  max-width: 800px;
+  max-height: 80vh;
+  padding: 3rem;
+  border-radius: 2rem;
+  position: relative;
+  overflow-y: auto;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+  animation: slideUp 0.4s ease-out;
+}
+
+@keyframes slideUp {
+  from { transform: translateY(50px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.close-btn {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  font-size: 2.5rem;
+  background: transparent;
+  border: none;
+  color: white;
+  cursor: pointer;
+  opacity: 0.5;
+  transition: opacity 0.3s;
+}
+
+.close-btn:hover {
+  opacity: 1;
+}
+
+#overlay-content h2 {
+  margin-top: 0;
+  color: var(--primary);
+}
+
+#overlay-content h3 {
+  margin: 2rem 0 1rem;
+}
+
+#overlay-content p {
+  margin-bottom: 1rem;
+  opacity: 0.8;
+}
+
+/* ================= MOBILE ================= */
+@media (max-width: 768px) {
+  .footer { padding: 4rem 5% 2rem; }
+  .overlay-card { padding: 2rem; }
+}

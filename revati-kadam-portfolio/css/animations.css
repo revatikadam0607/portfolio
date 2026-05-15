@@ -1,13 +1,10 @@
 .spark {
-  width: 5px;
-  height: 5px;
+  width: 6px; height: 6px;
   position: absolute;
-  background: var(--primary);
   border-radius: 50%;
-  animation: fade 0.5s linear;
+  animation: burst 0.6s ease-out forwards;
 }
-
-@keyframes fade {
-  from {opacity:1;}
-  to {opacity:0; transform: scale(3);}
+@keyframes burst {
+  0%   { opacity:1; transform: translate(0,0) scale(1); }
+  100% { opacity:0; transform: translate(var(--dx), var(--dy)) scale(0.2); }
 }

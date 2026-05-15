@@ -1,7 +1,10 @@
-function showSection(id) {
-  document.querySelectorAll(".section").forEach(s => {
+function showSection(id, scope = document) {
+  const target = scope.getElementById(id);
+  if (!target) return;
+
+  scope.querySelectorAll("[data-section]").forEach(s => {
     s.classList.remove("active");
   });
 
-  document.getElementById(id).classList.add("active");
+  target.classList.add("active");
 }

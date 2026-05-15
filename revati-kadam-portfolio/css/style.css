@@ -44,6 +44,103 @@ body {
   transform: translateX(5px);
 }
 
+/* ================= NAVBAR ================= */
+
+.navbar {
+  width: 100%;
+  padding: 18px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  background: rgba(15, 23, 42, 0.85);
+  backdrop-filter: blur(10px);
+
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+/* Desktop Navigation */
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+
+  list-style: none;
+}
+
+.nav-links li {
+  cursor: pointer;
+  font-weight: 500;
+  transition: 0.3s ease;
+
+  padding: 6px 10px;
+  border-radius: 8px;
+}
+
+.nav-links li:hover {
+  color: var(--primary);
+  background: rgba(255,255,255,0.05);
+}
+
+/* Hamburger Hidden on Desktop */
+
+.hamburger {
+  display: none;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+/* ================= MOBILE NAVBAR ================= */
+
+@media (max-width: 768px) {
+
+  .navbar {
+    padding: 16px 20px;
+  }
+
+  .hamburger {
+    display: block;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 75px;
+    right: 20px;
+
+    width: 220px;
+
+    flex-direction: column;
+    align-items: flex-start;
+
+    padding: 20px;
+
+    gap: 18px;
+
+    background: rgba(15, 23, 42, 0.95);
+
+    border-radius: 16px;
+
+    box-shadow: 0 10px 25px rgba(0,0,0,0.35);
+
+    display: none;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+}
+
 /* ================= SOCIAL ================= */
 .social {
   position: absolute;
@@ -488,3 +585,129 @@ form button:hover {
   }
 }
 
+
+/* ================= NAVBAR ================= */
+
+.navbar {
+  width: 100%;
+  padding: 18px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  background: rgba(15, 23, 42, 0.85);
+  backdrop-filter: blur(10px);
+
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+/* Desktop Navigation */
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+
+  list-style: none;
+}
+
+.nav-links li {
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.3s ease;
+
+  padding: 6px 10px;
+  border-radius: 8px;
+}
+
+.nav-links li:hover {
+  color:  #3b82f6;
+  background: rgba(255,255,255,0.05);
+  transform: translateY(-2px);
+}
+
+/* Hamburger Hidden on Desktop */
+
+.hamburger {
+  display: none;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+/* ================= MOBILE NAVBAR ================= */
+
+@media (max-width: 768px) {
+
+  .navbar {
+    padding: 20px 40px;
+  }
+
+  .hamburger {
+    display: block;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 75px;
+    right: 20px;
+
+    width: 220px;
+
+    flex-direction: column;
+    align-items: flex-start;
+
+    padding: 20px;
+
+    gap: 30px;
+
+    background: rgba(15, 23, 42, 0.95);
+
+    border-radius: 16px;
+
+    box-shadow: 0 10px 25px rgba(0,0,0,0.35);
+
+    display: none;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+}
+
+/* ===== FORCE HORIZONTAL NAVBAR ON DESKTOP ===== */
+
+@media screen and (min-width: 769px) {
+
+  .nav-links {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+
+    position: static !important;
+    width: auto !important;
+    background: transparent !important;
+
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .nav-links li {
+    display: inline-block;
+  }
+
+  .hamburger {
+    display: none !important;
+  }
+}

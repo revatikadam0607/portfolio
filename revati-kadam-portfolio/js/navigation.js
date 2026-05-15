@@ -5,3 +5,8 @@ function showSection(id) {
 
   document.getElementById(id).classList.add("active");
 }
+
+function toggleNavbar() {
+  const navLinks = document.getElementById("navLinks");
+  navLinks.classList.toggle("active");
+}

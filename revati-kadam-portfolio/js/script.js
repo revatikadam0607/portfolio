@@ -12,7 +12,11 @@ function type(){
   let text=roles[i];
   j=del?j-1:j+1;
 
-  document.getElementById("typing").innerText=text.substring(0,j);
+const typingEl = document.getElementById("typing");
+
+if (typingEl) {
+  typingEl.innerText = text.substring(0, j);
+}
 
   if(!del && j===text.length){
     del=true;
@@ -52,8 +56,9 @@ function toggleSettings(){
 }
 
 document.addEventListener("click", function(e){
-  const settings=document.querySelector(".settings");
-  if(!settings.contains(e.target)){
+  const settings = document.querySelector(".settings");
+  if (!settings) return;
+  if (!settings.contains(e.target)) {
     document.getElementById("settingsMenu").classList.remove("show");
   }
 });
@@ -67,6 +72,24 @@ document.addEventListener("mousemove", e=>{
   document.body.appendChild(s);
   setTimeout(()=>s.remove(),100);
 });
+
+const skillIcons = {
+  "React": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
+  "Node.js": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
+  "MongoDB": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg",
+  "JavaScript": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
+  "HTML": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg",
+  "CSS": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg",
+  "Java": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg",
+  "Express.js": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg",
+  "Bootstrap": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg",
+  "Tailwind CSS": "https://www.vectorlogo.zone/logos/tailwindcss/tailwindcss-icon.svg",
+  "SQL": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg",
+  "Object-Oriented Programming": "https://img.icons8.com/ios-filled/50/code.png",
+  "Operating Systems": "https://img.icons8.com/ios-filled/50/windows-10.png",
+  "Database Management Systems": "https://img.icons8.com/ios-filled/50/database.png",
+  "Computer Networks": "https://img.icons8.com/ios-filled/50/network.png"
+};
 
 // Skills
 fetch("data/skills.json")
@@ -87,49 +110,40 @@ fetch("data/skills.json")
     container.appendChild(card);
   });
 });
-const skillIcons = {
-  "React": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
-  "Node.js": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
-  "MongoDB": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg",
-  "JavaScript": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
-  "HTML": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg",
-  "CSS": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg",
-  "Java": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg",
-  "Express.js": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg",
-  "Bootstrap": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg",
-  "Tailwind CSS": "https://www.vectorlogo.zone/logos/tailwindcss/tailwindcss-icon.svg",
-  "SQL": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg",
-  "Object-Oriented Programming": "https://img.icons8.com/ios-filled/50/code.png",
-  "Operating Systems": "https://img.icons8.com/ios-filled/50/windows-10.png",
-  "Database Management Systems": "https://img.icons8.com/ios-filled/50/database.png",
-  "Computer Networks": "https://img.icons8.com/ios-filled/50/network.png"
-};
+  
 
 // Projects
 fetch("data/projects.json")
-.then(res => res.json())
-.then(data => {
-  const c = document.getElementById("projects-container");
+  .then(res => res.json())
+  .then(data => {
 
-  c.innerHTML = ""; // clear first
+    if (!Array.isArray(data)) {
+      console.error("Projects data is not an array:", data);
+      return;
+    }
 
-  data.forEach(p => {
-    let d = document.createElement("div");
+    const c = document.getElementById("projects-container");
 
-    d.innerHTML = `
-      <h3>${p.name}</h3>
-      <img src="${p.image}" width="300" onerror="this.src='https://via.placeholder.com/300'">
-      <br>
-      <a href="${p.live}" target="_blank">Live</a> |
-      <a href="${p.github}" target="_blank">GitHub</a>
-    `;
+    c.innerHTML = ""; 
 
-    c.appendChild(d);
+    data.forEach(p => {
+      let d = document.createElement("div");
+
+      d.innerHTML = `
+        <h3>${p.name || "Untitled Project"}</h3>
+        <img src="${p.image || './assets/images/project 1.png'}" width="300">
+        <br>
+        <a href="${p.live}" target="_blank">Live</a> |
+        <a href="${p.github}" target="_blank">GitHub</a>
+      `;
+
+      c.appendChild(d);
+    });
+
+  })
+  .catch(err => {
+    document.getElementById("projects-container").innerHTML = "Error loading projects";
   });
-})
-.catch(err => {
-  document.getElementById("projects-container").innerHTML = "Error loading projects";
-});
 
 // Initialize EmailJS
 (function(){

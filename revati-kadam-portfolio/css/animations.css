@@ -1,3 +1,4 @@
+/* ── Existing spark animation (unchanged) ─────────────────────────────── */
 .spark {
   width: 5px;
   height: 5px;
@@ -8,6 +9,50 @@
 }
 
 @keyframes fade {
-  from {opacity:1;}
-  to {opacity:0; transform: scale(3);}
+  from { opacity: 1; }
+  to   { opacity: 0; transform: scale(3); }
+}
+
+/* ── Section entrance animation ───────────────────────────────────────── */
+/*    Sections start invisible + shifted down                              */
+.section {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+
+/*    When JS adds .section-visible → fade + slide up into place          */
+.section.section-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/*    Reduced-motion: skip animation entirely                              */
+@media (prefers-reduced-motion: reduce) {
+  .section {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* ── Scroll progress bar ──────────────────────────────────────────────── */
+#scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 0%;
+  background: var(--primary);
+  z-index: 9999;
+  transition: width 0.1s linear;
+  border-radius: 0 2px 2px 0;
+}
+
+/* ── Active nav link style ────────────────────────────────────────────── */
+.nav-links li.nav-active {
+  color: var(--primary);
+  border-bottom: 2px solid var(--primary);
+  padding-bottom: 2px;
+  font-weight: 600;
 }

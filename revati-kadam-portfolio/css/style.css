@@ -22,6 +22,7 @@ body {
   color: var(--text);
   line-height: 1.7;
   overflow-x: hidden;
+  caret-color: transparent;
 }
 
 /* ── SCROLL PROGRESS ── */
@@ -578,10 +579,12 @@ body {
   display: flex;
   flex-direction: column;
   gap: 14px;
+  
 }
 
 form input,
 form textarea {
+  caret-color: auto;
   width: 100%;
   padding: 14px 16px;
   border-radius: 10px;

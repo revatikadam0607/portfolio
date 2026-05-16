@@ -145,16 +145,21 @@ fetch("data/projects.json")
 document.getElementById("contact-form").addEventListener("submit", function(e){
   e.preventDefault();
 
-  emailjs.sendForm("service_08nkbcb", "template_2yrnipb", this)
-    .then(function(){
-      alert("Message sent successfully!");
-    }, function(error){
-      alert("Failed to send message.");
-    });
+  emailjs.sendForm(
+    "service_08nkbcb",
+    "template_2yrnipb",
+    this
+  )
+  .then(function () {
+    alert("Message sent successfully!");
+  })
+  .catch(function () {
+    alert("Failed to send message.");
+  });
 });
 
+// Navbar Toggle
 function toggleNavbar() {
   document.getElementById("navLinks").classList.toggle("show");
 }
-
 

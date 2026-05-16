@@ -5,14 +5,16 @@ function showSection(id) {
   });
 
   document.getElementById(id).classList.add("active");
+
+  updateActiveNav(id); 
 }
 
 function toggleNavbar() {
   const navLinks = document.getElementById("navLinks");
-  navLinks.classList.toggle("active");
+  navLinks.classList.toggle("show");
 }
-  updateActiveNav(id);
-}
+  
+
 
 // ── Active nav link highlight ──────────────────────────────────────────────
 function updateActiveNav(activeId) {

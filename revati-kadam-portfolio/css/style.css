@@ -413,7 +413,9 @@ form button:hover {
   backdrop-filter: blur(10px);
   color: white;
   padding: 20px;
-top: 0;
+  top: 0;
+  z-index: 9999;   
+
   left: 0;
   width: 100%;
   height: 20px;

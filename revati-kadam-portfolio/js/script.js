@@ -1,60 +1,60 @@
 function showSection(id) {
-  document.getElementById(id).scrollIntoView({
-    behavior: "smooth"
-  });
+  document.getElementById(id).scrollIntoView({ behavior: "smooth" });
 }
 
-// Typing
-const roles=["Programmer", "Student","Web Developer","Website Designer","Problem Solver","Tech Enthusiast"];
-let i=0,j=0,del=false;
+const roles = ["Web Developer", "Programmer", "Problem Solver", "Website Designer", "Tech Enthusiast"];
+let i = 0, j = 0, del = false;
 
-function type(){
-  let text=roles[i];
-  j=del?j-1:j+1;
+function type() {
+  let text = roles[i];
+  const typingEl = document.getElementById("typing");
 
-const typingEl = document.getElementById("typing");
+  j = del ? j - 1 : j + 1;
 
-if (typingEl) {
-  typingEl.innerText = text.substring(0, j);
-}
-
-  if(!del && j===text.length){
-    del=true;
-    return setTimeout(type,1500);
+  if (typingEl) {
+    typingEl.innerText = text.substring(0, j);
   }
 
-  if(del && j===0){
-    del=false;
-    i=(i+1)%roles.length;
+  if (!del && j === text.length) {
+    del = true;
+    return setTimeout(type, 1500);
   }
 
-  setTimeout(type,del?80:180);
+  if (del && j === 0) {
+    del = false;
+    i = (i + 1) % roles.length;
+  }
+
+  setTimeout(type, del ? 80 : 180);
 }
+
 type();
 
-// Theme
-function setTheme(mode){
-  if(mode==="light"){
-    document.documentElement.style.setProperty('--bg','#f8fafc');
-    document.documentElement.style.setProperty('--text','#000');   // BLACK text
-    document.documentElement.style.setProperty('--card','#e2e8f0');
+(function() {
+  const saved = localStorage.getItem("theme");
+  if (saved === "light") document.body.classList.add("light-theme");
+})();
+
+function setTheme(mode) {
+  if (mode === "light") {
+    document.body.classList.add("light-theme");
   } else {
-    document.documentElement.style.setProperty('--bg','#0f172a');
-    document.documentElement.style.setProperty('--text','#fff');   // WHITE text
-    document.documentElement.style.setProperty('--card','#1e293b');
+    document.body.classList.remove("light-theme");
   }
+  localStorage.setItem("theme", mode);
 }
 
-// Color
-function setColor(color){
-  document.documentElement.style.setProperty('--primary',color);
+function setColor(color) {
+  document.documentElement.style.setProperty('--primary', color);
 }
 
-// Settings
-function toggleSettings(){
+function toggleSettings() {
   document.getElementById("settingsMenu").classList.toggle("show");
 }
 
+document.addEventListener("click", function (e) {
+  const settings = document.querySelector(".settings");
+  if (!settings.contains(e.target)) {
 document.addEventListener("click", function(e){
   const settings = document.querySelector(".settings");
   if (!settings) return;
@@ -63,16 +63,22 @@ document.addEventListener("click", function(e){
   }
 });
 
-// ❤️ Spark
-document.addEventListener("mousemove", e=>{
-  const s=document.createElement("div");
-  s.className="spark";
-  s.style.left=e.pageX+"px";
-  s.style.top=e.pageY+"px";
+document.addEventListener("mousemove", e => {
+  const s = document.createElement("div");
+  s.className = "spark";
+  s.style.left = e.pageX + "px";
+  s.style.top = e.pageY + "px";
   document.body.appendChild(s);
-  setTimeout(()=>s.remove(),100);
+  setTimeout(() => s.remove(), 100);
 });
 
+// Hamburger toggle
+function toggleNavbar() {
+  const links = document.getElementById("navLinks");
+  if (window.innerWidth <= 768) {
+    links.classList.toggle("show");
+  }
+}
 const skillIcons = {
   "React": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
   "Node.js": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
@@ -90,6 +96,25 @@ const skillIcons = {
   "Database Management Systems": "https://img.icons8.com/ios-filled/50/database.png",
   "Computer Networks": "https://img.icons8.com/ios-filled/50/network.png"
 };
+
+fetch("data/skills.json")
+  .then(res => res.json())
+  .then(data => {
+    const container = document.getElementById("skills-container");
+    container.innerHTML = "";
+    data.forEach(skill => {
+      const card = document.createElement("div");
+      card.className = "skill-card";
+      card.innerHTML = `
+        <img src="${skillIcons[skill] || ''}" alt="${skill}" />
+        <p>${skill}</p>
+      `;
+      container.appendChild(card);
+    });
+  })
+  .catch(() => {
+    document.getElementById("skills-container").innerHTML = "<p>Could not load skills.</p>";
+  });
 
 // Skills
 fetch("data/skills.json")
@@ -113,56 +138,53 @@ fetch("data/skills.json")
   
 
 // Projects
-fetch("data/projects.json")
-  .then(res => res.json())
-  .then(data => {
+const roles = ["Web Developer", "Programmer", "Problem Solver", "Website Designer", "Tech Enthusiast"];
+let i = 0, j = 0, del = false;
 
-    if (!Array.isArray(data)) {
-      console.error("Projects data is not an array:", data);
-      return;
-    }
+function type() {
+  let text = roles[i];
+  const typingEl = document.getElementById("typing");
 
-    const c = document.getElementById("projects-container");
+  j = del ? j - 1 : j + 1;
 
-    c.innerHTML = ""; 
+  if (typingEl) {
+    typingEl.innerText = text.substring(0, j);
+  }
 
-    data.forEach(p => {
-      let d = document.createElement("div");
+  if (!del && j === text.length) {
+    del = true;
+    return setTimeout(type, 1500);
+  }
 
-      d.innerHTML = `
-        <h3>${p.name || "Untitled Project"}</h3>
-        <img src="${p.image || './assets/images/project 1.png'}" width="300">
-        <br>
-        <a href="${p.live}" target="_blank">Live</a> |
-        <a href="${p.github}" target="_blank">GitHub</a>
-      `;
+  if (del && j === 0) {
+    del = false;
+    i = (i + 1) % roles.length;
+  }
 
-      c.appendChild(d);
-    });
+  setTimeout(type, del ? 80 : 180);
+}
 
-  })
-  .catch(err => {
-    document.getElementById("projects-container").innerHTML = "Error loading projects";
-  });
+type();
 
-// Initialize EmailJS
-(function(){
+// ── EMAILJS ──
+(function () {
   emailjs.init("kqnCcPYqtdwl_Oaqt");
 })();
 
-// Send form
-document.getElementById("contact-form").addEventListener("submit", function(e){
+document.getElementById("contact-form").addEventListener("submit", function (e) {
   e.preventDefault();
+  const btn = this.querySelector("button");
+  btn.textContent = "Sending...";
+  btn.disabled = true;
 
-  emailjs.sendForm("service_08nkbcb", "template_2yrnipb", this)
-    .then(function(){
-      alert("Message sent successfully!");
-    }, function(error){
-      alert("Failed to send message.");
-    });
+emailjs.sendForm("service_08nkbcb", "template_2yrnipb", this)
+  .then(() => {
+    alert("Message sent successfully!");
+    this.reset();
+    btn.textContent = "Send Message";
+    btn.disabled = false;
+  }, () => {
+    alert("Failed to send. Please try again.");
+    btn.textContent = "Send Message";
+    btn.disabled = false;
 });
-
-function toggleNavbar() {
-  document.getElementById("navLinks").classList.toggle("show");
-}
-

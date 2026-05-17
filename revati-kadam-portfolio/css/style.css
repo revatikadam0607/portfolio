@@ -276,8 +276,8 @@ body {
 }
 
 .hero-social img {
-  width: 20px; height: 20px;
-  filter: brightness(10);
+  width: 25px; height: 25px;
+  /* filter: brightness(10); */
 }
 
 .hero-image { flex-shrink: 0; }

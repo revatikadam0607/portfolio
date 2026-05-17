@@ -332,14 +332,24 @@ footer p {
 }
 
 .settings:hover {
+<<<<<<< HEAD
+=======
+  transform: rotate(90deg) scale(1.1);
+>>>>>>> fe538410da3ddc6a4f2f262b9cedd7531b85c777
   filter: brightness(1.1);
 }
 
 .menu {
   display: none;
+<<<<<<< HEAD
   position: fixed;
   bottom: 95px;
   right: 30px;
+=======
+  position: absolute;
+  bottom: 65px;
+  right: 0;
+>>>>>>> fe538410da3ddc6a4f2f262b9cedd7531b85c777
   background: rgba(15, 23, 42, 0.98);
   backdrop-filter: blur(15px);
   padding: 1.5rem;
@@ -449,11 +459,14 @@ footer p {
     font-size: 1.2rem;
   }
 
+<<<<<<< HEAD
   .menu {
     bottom: 85px;
     right: 25px;
   }
 
+=======
+>>>>>>> fe538410da3ddc6a4f2f262b9cedd7531b85c777
   .section { padding: 80px 8% 60px; }
 }
 

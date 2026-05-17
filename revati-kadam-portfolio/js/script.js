@@ -21,7 +21,7 @@ function type() {
 }
 type();
 
-(function() {
+(function () {
   const saved = localStorage.getItem("theme");
   if (saved === "light") document.body.classList.add("light-theme");
 })();
@@ -156,3 +156,24 @@ document.getElementById("contact-form").addEventListener("submit", function (e) 
       btn.disabled = false;
     });
 });
+
+
+//Dynamic greeting logic
+
+function setGreeting() {
+  const currentHour = new Date().getHours();
+
+  const greetingElement = document.getElementById("greeting");
+
+  if (greetingElement) {
+    if (currentHour < 12) {
+      greetingElement.innerText = "GOOD MORNING!";
+    } else if (currentHour < 18) {
+      greetingElement.innerText = "GOOD AFTERNOON!"
+    } else {
+      greetingElement.innerText = "GOOD EVENING!";
+    }
+  }
+}
+
+document.addEventListener("DOMContentLoaded", setGreeting);

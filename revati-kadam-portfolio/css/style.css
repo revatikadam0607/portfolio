@@ -332,15 +332,14 @@ footer p {
 }
 
 .settings:hover {
-  transform: rotate(90deg) scale(1.1);
   filter: brightness(1.1);
 }
 
 .menu {
   display: none;
-  position: absolute;
-  bottom: 65px;
-  right: 0;
+  position: fixed;
+  bottom: 95px;
+  right: 30px;
   background: rgba(15, 23, 42, 0.98);
   backdrop-filter: blur(15px);
   padding: 1.5rem;
@@ -448,6 +447,11 @@ footer p {
     width: 45px;
     height: 45px;
     font-size: 1.2rem;
+  }
+
+  .menu {
+    bottom: 85px;
+    right: 25px;
   }
 
   .section { padding: 80px 8% 60px; }

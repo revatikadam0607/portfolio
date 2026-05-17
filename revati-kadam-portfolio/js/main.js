@@ -32,3 +32,4 @@ fetch("data/projects.json")
       container.appendChild(div);
     });
   });
+  

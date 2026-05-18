@@ -57,7 +57,7 @@
           <div class="hero-img-circle">
             <img src="assets/images/profile.jpg" alt="Rkimg">
           </div>
-        </div> 
+        </div>
       </div>
     </div>
   </section>
@@ -94,79 +94,24 @@
   </section>
 
   <section id="skills" class="section">
-
-  <div class="skills-header">
-    <h2>Skills & Expertise</h2>
-
-    <p>
-      Technologies and tools I use to build scalable,
-      modern, and responsive applications.
-    </p>
-  </div>
-
-  <div class="skills-tabs">
-
-  <button
-    class="skill-tab active"
-    data-category="all">
-
-    All
-
-  </button>
-
-  <button
-    class="skill-tab"
-    data-category="Frontend">
-
-    Frontend
-
-  </button>
-
-  <button
-    class="skill-tab"
-    data-category="Backend">
-
-    Backend
-
-  </button>
-
-  <button
-    class="skill-tab"
-    data-category="Programming Languages">
-
-    Programming
-
-  </button>
-
-  <button
-    class="skill-tab"
-    data-category="Core Computer Science">
-
-    Core Subjects
-
-  </button>
-
-  <button
-    class="skill-tab"
-    data-category="Tools & Platforms">
-
-    Tools
-
-  </button>
-
-  <button
-    class="skill-tab"
-    data-category="Currently Learning">
-
-    Learning
-
-  </button>
-
-</div>
-
-  <div id="skills-container"></div>
-
-</section>
+    <div class="skills-header">
+      <h2>Skills & Expertise</h2>
+      <p>
+        Technologies and tools I use to build scalable,
+        modern, and responsive applications.
+      </p>
+    </div>
+    <div class="skills-tabs">
+      <button class="skill-tab active" data-category="all">All</button>
+      <button class="skill-tab" data-category="Frontend">Frontend</button>
+      <button class="skill-tab" data-category="Backend">Backend</button>
+      <button class="skill-tab" data-category="Programming Languages">Programming</button>
+      <button class="skill-tab" data-category="Core Computer Science">Core Subjects</button>
+      <button class="skill-tab" data-category="Tools & Platforms">Tools</button>
+      <button class="skill-tab" data-category="Currently Learning">Learning</button>
+    </div>
+    <div id="skills-container"></div>
+  </section>
 
   <section id="projects" class="section">
     <h2>Projects</h2>
@@ -196,6 +141,7 @@
 
 </div>
 
+<!-- ✅ FIXED: Theme Switcher with working color dots -->
 <div class="settings" onclick="toggleSettings()">
   <span class="settings-icon">⚙️</span>
   <div class="menu" id="settingsMenu">
@@ -204,11 +150,11 @@
     <button onclick="setTheme('light')">☀️</button>
     <p>Colors</p>
     <div class="color-options">
-      <span style="background:#3b82f6" onclick="setColor('#3b82f6')"></span>
-      <span style="background:#22c55e" onclick="setColor('#22c55e')"></span>
-      <span style="background:#ec4899" onclick="setColor('#ec4899')"></span>
-      <span style="background:#f97316" onclick="setColor('#f97316')"></span>
-      <span style="background:#ef4444" onclick="setColor('#ef4444')"></span>
+      <span class="color-dot" data-color="#3b82f6" style="background:#3b82f6" title="Blue"   onclick="setColor('#3b82f6')"></span>
+      <span class="color-dot" data-color="#22c55e" style="background:#22c55e" title="Green"  onclick="setColor('#22c55e')"></span>
+      <span class="color-dot" data-color="#ec4899" style="background:#ec4899" title="Pink"   onclick="setColor('#ec4899')"></span>
+      <span class="color-dot" data-color="#f97316" style="background:#f97316" title="Orange" onclick="setColor('#f97316')"></span>
+      <span class="color-dot" data-color="#ef4444" style="background:#ef4444" title="Red"    onclick="setColor('#ef4444')"></span>
     </div>
   </div>
 </div>

@@ -81,27 +81,133 @@ const skillIcons = {
   "Object-Oriented Programming": "https://img.icons8.com/ios-filled/50/code.png",
   "Operating Systems": "https://img.icons8.com/ios-filled/50/windows-10.png",
   "Database Management Systems": "https://img.icons8.com/ios-filled/50/database.png",
-  "Computer Networks": "https://img.icons8.com/ios-filled/50/network.png"
+  "Computer Networks": "https://img.icons8.com/ios-filled/50/network.png",
+  "Git": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg",
+  "GitHub": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg",
+  "VS Code": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg",
+  "Netlify": "https://www.vectorlogo.zone/logos/netlify/netlify-icon.svg",
+  "Docker": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg",
+  "AWS": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg",
 };
 
 fetch("data/skills.json")
   .then(res => res.json())
   .then(data => {
-    const container = document.getElementById("skills-container");
+
+    const container =
+      document.getElementById("skills-container");
+
     container.innerHTML = "";
-    data.forEach(skill => {
-      const card = document.createElement("div");
-      card.className = "skill-card";
-      card.innerHTML = `
-        <img src="${skillIcons[skill] || ''}" alt="${skill}" />
-        <p>${skill}</p>
-      `;
-      container.appendChild(card);
-    });
+
+    Object.entries(data).forEach(
+      ([category, skills]) => {
+
+        const section =
+          document.createElement("div");
+
+        section.className =
+          "skills-category";
+
+        section.dataset.category =
+          category;
+
+        section.innerHTML = `
+          <h3 class="skills-category-title">
+            ${category}
+          </h3>
+
+          <div class="skills-grid"></div>
+        `;
+
+        const grid =
+          section.querySelector(".skills-grid");
+
+        skills.forEach(skill => {
+
+          const card =
+            document.createElement("div");
+
+          card.className = "skill-card";
+
+          card.innerHTML = `
+            <div class="skill-card-content">
+
+              <img
+                src="${skillIcons[skill.name]}"
+                alt="${skill.name}"
+              >
+
+              <h3>${skill.name}</h3>
+
+              <span class="skill-level">
+                ${skill.level}
+              </span>
+
+            </div>
+          `;
+
+          grid.appendChild(card);
+        });
+
+        container.appendChild(section);
+      });
   })
   .catch(() => {
-    document.getElementById("skills-container").innerHTML = "<p>Could not load skills.</p>";
+
+    document.getElementById(
+      "skills-container"
+    ).innerHTML =
+      "<p>Could not load skills.</p>";
   });
+  document.addEventListener(
+  "click",
+  function(e) {
+
+    if (
+      e.target.classList.contains(
+        "skill-tab"
+      )
+    ) {
+
+      const tabs =
+        document.querySelectorAll(
+          ".skill-tab"
+        );
+
+      tabs.forEach(tab =>
+        tab.classList.remove("active")
+      );
+
+      e.target.classList.add("active");
+
+      const category =
+        e.target.dataset.category;
+
+      const sections =
+        document.querySelectorAll(
+          ".skills-category"
+        );
+
+      sections.forEach(section => {
+
+        if (
+          category === "all"
+        ) {
+
+          section.style.display =
+            "block";
+
+        } else {
+
+          section.style.display =
+            section.dataset.category === category
+              ? "block"
+              : "none";
+        }
+      });
+    }
+  }
+);
 
 fetch("data/projects.json")
   .then(res => res.json())

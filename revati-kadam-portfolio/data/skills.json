@@ -1,17 +1,107 @@
-[
-  "React",
-  "Node.js",
-  "MongoDB",
-  "JavaScript",
-  "HTML",
-  "CSS",
-  "Java",
-  "Express.js",
-  "Bootstrap",
-  "Tailwind CSS",
-  "SQL",
-  "Object-Oriented Programming",
-  "Operating Systems",
-  "Database Management Systems",
-  "Computer Networks"
-]
+{
+  "Frontend": [
+    {
+      "name": "React",
+      "level": "Advanced"
+    },
+    {
+      "name": "HTML",
+      "level": "Advanced"
+    },
+    {
+      "name": "CSS",
+      "level": "Advanced"
+    },
+    {
+      "name": "JavaScript",
+      "level": "Intermediate"
+    },
+    {
+      "name": "Tailwind CSS",
+      "level": "Intermediate"
+    },
+    {
+      "name": "Bootstrap",
+      "level": "Intermediate"
+    }
+  ],
+
+  "Backend": [
+    {
+      "name": "Node.js",
+      "level": "Intermediate"
+    },
+    {
+      "name": "Express.js",
+      "level": "Intermediate"
+    },
+    {
+      "name": "MongoDB",
+      "level": "Intermediate"
+    },
+    {
+      "name": "SQL",
+      "level": "Intermediate"
+    }
+  ],
+
+  "Programming Languages": [
+    {
+      "name": "Java",
+      "level": "Advanced"
+    },
+    {
+      "name": "JavaScript",
+      "level": "Intermediate"
+    }
+  ],
+
+  "Core Computer Science": [
+    {
+      "name": "Operating Systems",
+      "level": "Intermediate"
+    },
+    {
+      "name": "Database Management Systems",
+      "level": "Intermediate"
+    },
+    {
+      "name": "Computer Networks",
+      "level": "Intermediate"
+    },
+    {
+      "name": "Object-Oriented Programming",
+      "level": "Advanced"
+    }
+  ],
+
+  "Tools & Platforms": [
+    {
+      "name": "Git",
+      "level": "Intermediate"
+    },
+    {
+      "name": "GitHub",
+      "level": "Intermediate"
+    },
+    {
+      "name": "VS Code",
+      "level": "Advanced"
+    },
+    {
+      "name": "Netlify",
+      "level": "Intermediate"
+    }
+  ],
+
+  "Currently Learning": [
+    {
+      "name": "Docker",
+      "level": "Beginner"
+    },
+    {
+      "name": "AWS",
+      "level": "Beginner"
+    }
+  ]
+}

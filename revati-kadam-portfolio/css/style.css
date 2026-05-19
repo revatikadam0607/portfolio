@@ -488,3 +488,29 @@ form button:hover {
   }
 }
 
+/* Show full navbar on large screens */
+@media (min-width: 992px) {
+  .nav-links {
+    display: flex !important;   /* always visible */
+    position: static;           /* inline, not absolute */
+    flex-direction: row;
+    gap: 20px;
+    background: transparent;
+    box-shadow: none;
+    padding: 0;
+    width: auto;
+  }
+
+  .hamburger {
+    display: none;              /* hide hamburger on large screens */
+  }
+
+  .nav-links li {
+    color: var(--text);
+  }
+
+  .nav-links li:hover {
+    color: var(--primary);
+    transform: none;
+  }
+}

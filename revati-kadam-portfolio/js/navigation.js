@@ -4,8 +4,17 @@ function showSection(id) {
     behavior: "smooth"
   });
 
-  updateActiveNav(id);
+  document.getElementById(id).classList.add("active");
+
+  updateActiveNav(id); 
 }
+
+function toggleNavbar() {
+  const navLinks = document.getElementById("navLinks");
+  navLinks.classList.toggle("show");
+}
+  
+
 
 // ── Active nav link highlight ──────────────────────────────────────────────
 function updateActiveNav(activeId) {

@@ -95,14 +95,14 @@ const skillIcons = {
   "HTML": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg",
   "CSS": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg",
   "Java": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg",
-  "Express.js": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg",
+  "Express.js": "https://img.icons8.com/color/96/express-js.png",
   "Bootstrap": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg",
   "Tailwind CSS": "https://www.vectorlogo.zone/logos/tailwindcss/tailwindcss-icon.svg",
-  "SQL": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg",
-  "Object-Oriented Programming": "https://img.icons8.com/ios-filled/50/code.png",
-  "Operating Systems": "https://img.icons8.com/ios-filled/50/windows-10.png",
-  "Database Management Systems": "https://img.icons8.com/ios-filled/50/database.png",
-  "Computer Networks": "https://img.icons8.com/ios-filled/50/network.png"
+ "SQL": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg",
+  "Object-Oriented Programming": "https://img.icons8.com/fluency/48/source-code.png",
+  "Operating Systems": "https://img.icons8.com/fluency/48/windows-10.png",
+  "Database Management Systems": "https://img.icons8.com/color/96/database.png",
+ "Computer Networks": "https://img.icons8.com/color/96/network-card.png",
 };
 
 // Projects

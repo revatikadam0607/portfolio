@@ -7,58 +7,290 @@
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/animations.css">
   <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 </head>
-<body>
+<body class="loading">
+
+<!-- Preloader Overlay -->
+<div id="preloader" aria-hidden="false">
+  <!-- Left Curtain Layers -->
+  <div class="preloader-curtain preloader-curtain--left preloader-curtain--layer3"></div>
+  <div class="preloader-curtain preloader-curtain--left preloader-curtain--layer2"></div>
+  <div class="preloader-curtain preloader-curtain--left preloader-curtain--layer1"></div>
+
+  <!-- Right Curtain Layers -->
+  <div class="preloader-curtain preloader-curtain--right preloader-curtain--layer3"></div>
+  <div class="preloader-curtain preloader-curtain--right preloader-curtain--layer2"></div>
+  <div class="preloader-curtain preloader-curtain--right preloader-curtain--layer1"></div>
+
+  <div class="preloader-radial preloader-radial--1"></div>
+  <div class="preloader-radial preloader-radial--2"></div>
+  
+  <div class="preloader-content">
+    <div class="preloader-logo">
+      <span class="pl-char">R</span><span class="pl-char">e</span><span class="pl-char">v</span><span class="pl-char">a</span><span class="pl-char">t</span><span class="pl-char">i</span><span class="pl-space">&nbsp;</span><span class="pl-char-accent">K</span><span class="pl-char-accent">a</span><span class="pl-char-accent">d</span><span class="pl-char-accent">a</span><span class="pl-char-accent">m</span><span class="pl-char-accent">.</span>
+    </div>
+    
+    <div class="preloader-dashboard">
+      <div class="preloader-circle-wrapper">
+        <svg class="preloader-svg-circle" viewBox="0 0 100 100">
+          <circle class="circle-bg" cx="50" cy="50" r="45"></circle>
+          <circle class="circle-progress" id="preloaderCircle" cx="50" cy="50" r="45"></circle>
+        </svg>
+        <div class="preloader-percentage" id="preloaderCounter">
+          <div class="ticker-wrapper">
+            <div class="ticker-column ticker-column--hundreds" id="tickerHundreds">
+              <span>0</span>
+              <span>1</span>
+            </div>
+            <div class="ticker-column ticker-column--tens" id="tickerTens">
+              <span>0</span>
+              <span>1</span>
+              <span>2</span>
+              <span>3</span>
+              <span>4</span>
+              <span>5</span>
+              <span>6</span>
+              <span>7</span>
+              <span>8</span>
+              <span>9</span>
+            </div>
+            <div class="ticker-column ticker-column--ones" id="tickerOnes">
+              <span>0</span>
+              <span>1</span>
+              <span>2</span>
+              <span>3</span>
+              <span>4</span>
+              <span>5</span>
+              <span>6</span>
+              <span>7</span>
+              <span>8</span>
+              <span>9</span>
+            </div>
+            <span class="ticker-percent">%</span>
+          </div>
+        </div>
+      </div>
+      <div class="preloader-status" id="preloaderStatus">CONNECTING TO HOST...</div>
+    </div>
+  </div>
+</div>
 
 <div id="scroll-progress"></div>
 
-<nav class="navbar">
-  <div class="logo">Revati Kadam</div>
-  <div class="hamburger" onclick="toggleNavbar()">☰</div>
-  <ul class="nav-links" id="navLinks">
-    <li onclick="showSection('home'); toggleNavbar()">Home</li>
-    <li onclick="showSection('about'); toggleNavbar()">About</li>
-    <li onclick="showSection('skills'); toggleNavbar()">Skills</li>
-    <li onclick="showSection('projects'); toggleNavbar()">Projects</li>
-    <li onclick="showSection('contact'); toggleNavbar()">Contact</li>
+<header class="navbar" id="navbar" aria-label="Main Navigation">
+  <div class="nav-bg-gradient"></div>
+  <div class="nav-container">
+    <div class="logo">Revati <span class="logo-accent">Kadam.</span></div>
+    
+    <nav class="desktop-nav">
+      <ul class="nav-links" id="desktopNavLinks" role="menubar">
+        <div class="nav-indicator" id="navIndicator"></div>
+        <li role="none"><a href="#home" data-section="home" class="nav-link" role="menuitem" tabindex="0">Home</a></li>
+        <li role="none"><a href="#about" data-section="about" class="nav-link" role="menuitem" tabindex="0">About</a></li>
+        <li role="none"><a href="#skills" data-section="skills" class="nav-link" role="menuitem" tabindex="0">Skills</a></li>
+        <li role="none"><a href="#projects" data-section="projects" class="nav-link" role="menuitem" tabindex="0">Projects</a></li>
+        <li role="none"><a href="#contact" data-section="contact" class="nav-link" role="menuitem" tabindex="0">Contact</a></li>
+      </ul>
+    </nav>
+    
+    <div class="nav-actions">
+      <a href="assets/resume/revati-kadam-resume.pdf" download class="resume-btn-nav magnetic-btn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 6px;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        <span>Download Resume</span>
+      </a>
+      <button class="hamburger" id="hamburger" aria-label="Toggle navigation" aria-expanded="false" aria-controls="sidebarDrawer">
+        <span class="line line-1"></span>
+        <span class="line line-2"></span>
+        <span class="line line-3"></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="nav-overlay" id="navOverlay"></div>
+
+<aside class="sidebar-drawer" id="sidebarDrawer" aria-hidden="true">
+  <div class="sidebar-header">
+    <div class="sidebar-logo">Revati Kadam<span class="logo-accent">.</span></div>
+    <button class="close-sidebar" id="closeSidebar" aria-label="Close navigation">
+      &times;
+    </button>
+  </div>
+  
+  <ul class="sidebar-links" id="sidebarLinks" role="menu">
+    <li role="none"><a href="#home" data-section="home" class="sidebar-link" role="menuitem">Home</a></li>
+    <li role="none"><a href="#about" data-section="about" class="sidebar-link" role="menuitem">About</a></li>
+    <li role="none"><a href="#skills" data-section="skills" class="sidebar-link" role="menuitem">Skills</a></li>
+    <li role="none"><a href="#projects" data-section="projects" class="sidebar-link" role="menuitem">Projects</a></li>
+    <li role="none"><a href="#contact" data-section="contact" class="sidebar-link" role="menuitem">Contact</a></li>
   </ul>
-</nav>
+  
+  <div class="sidebar-social">
+    <a href="https://github.com/revatikadam0607" target="_blank" aria-label="GitHub">GitHub</a>
+    <a href="https://www.linkedin.com/in/revati-kadam-41818a32a" target="_blank" aria-label="LinkedIn">LinkedIn</a>
+  </div>
+</aside>
 
 <div class="main">
 
-  <section id="home" class="section">
-    <div class="hero-content">
-      <div class="hero-text">
-        <p class="hello-tag">HELLO!</p>
-        <h1>I am Revati Kadam</h1>
-        <h2>I am a <span id="typing"></span></h2>
-        <p class="hero-desc">
-          A passionate Computer Science student who loves building clean,
-          responsive web apps and solving real-world problems through code.
-        </p>
-        <div class="hero-btns">
-          <a href="#projects" onclick="showSection('projects')" class="btn-primary">View Projects</a>
-          <a href="assets/resume/revati-kadam-resume.pdf" download class="btn-outline">Download Resume</a>
-        </div>
-        <div class="hero-social">
-          <a href="https://github.com/revatikadam0607" target="_blank">
-            <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub">
-          </a>
-          <a href="https://www.linkedin.com/in/revati-kadam-41818a32a" target="_blank">
-            <img src="https://cdn-icons-png.flaticon.com/24/174/174857.png" alt="LinkedIn">
-          </a>
-          <a href="https://leetcode.com/u/Revati0607/" target="_blank">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/1/19/LeetCode_logo_black.png" alt="LeetCode">
-          </a>
-        </div>
-      </div>
-      <div class="hero-image">
-        <div class="hero-image">
-          <div class="hero-img-circle">
-            <img src="assets/images/profile.jpg" alt="Rkimg">
+  <section id="home" class="hero-v2">
+
+    <!-- LAYER 1: Reactive Mesh Background -->
+    <div class="hv2-mesh" id="heroMesh"></div>
+    <div class="hv2-radial hv2-radial--a"></div>
+    <div class="hv2-radial hv2-radial--b"></div>
+    <div class="hv2-radial hv2-radial--c"></div>
+    <div class="hv2-noise"></div>
+    <canvas id="heroCanvas" class="hv2-canvas"></canvas>
+
+    <div class="hv2-layout">
+      
+      <div class="hv2-main-grid">
+        <!-- LEFT: TEXT CONTENT -->
+        <div class="hv2-text" id="hv2Text">
+          <div class="hv2-eyebrow-wrap">
+            <span class="hv2-eyebrow">
+              <span class="hv2-eyebrow-dot"></span>
+              <span class="hv2-eyebrow-label">WELCOME TO MY PORTFOLIO</span>
+            </span>
           </div>
-        </div> 
+
+          <h1 class="hv2-heading">
+            I'm Revati <br><span class="hv2-name">Kadam.</span>
+          </h1>
+
+          <div class="hv2-typing-wrap">
+            I build <span class="hv2-typed-text" id="typing">digital</span><span class="hv2-cursor">|</span>
+          </div>
+
+          <p class="hv2-desc">
+            A passionate Computer Science student who loves building clean,
+            responsive web apps and solving real-world problems through code.
+          </p>
+
+          <div class="hv2-cta-cluster" id="hv2CTA">
+            <a href="#projects" class="hv2-btn hv2-btn--solid magnetic-btn" id="ctaPrimary">
+              <span>View Projects</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-left: 6px;"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+              <div class="hv2-btn-glow"></div>
+            </a>
+            <a href="assets/resume/revati-kadam-resume.pdf" download class="hv2-btn hv2-btn--ghost magnetic-btn" id="ctaSecondary">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 6px;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              <span>Download Resume</span>
+            </a>
+          </div>
+
+          <div class="hv2-connect-wrap" id="hv2Social">
+            <div class="hv2-connect-label">CONNECT WITH ME</div>
+            <div class="hv2-social-bar">
+              <a href="https://github.com/revatikadam0607" target="_blank" class="hv2-social-link magnetic-btn" data-tip="GitHub">
+                <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+              </a>
+              <a href="https://www.linkedin.com/in/revati-kadam-41818a32a" target="_blank" class="hv2-social-link magnetic-btn" data-tip="LinkedIn">
+                <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+              </a>
+              <a href="https://leetcode.com/u/Revati0607/" target="_blank" class="hv2-social-link magnetic-btn" data-tip="LeetCode">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT: 6-LAYER PORTRAIT SYSTEM -->
+        <div class="hv2-portrait-scene" id="hv2Portrait">
+          <!-- Ambient Glow -->
+          <div class="hv2-portrait-glow" id="portraitGlow"></div>
+
+          <!-- Orbital Rings and Orbiting Dots -->
+          <div class="hv2-orbital-container">
+            <div class="hv2-orbital-ring hv2-orbital-ring--1"></div>
+            <div class="hv2-orbital-ring hv2-orbital-ring--2" id="portraitOrbital">
+              <div class="hv2-orbit-dot hv2-orbit-dot--active"></div>
+            </div>
+            <div class="hv2-orbital-ring hv2-orbital-ring--3" id="portraitOrbital2">
+              <div class="hv2-orbit-dot hv2-orbit-dot--blue"></div>
+              <div class="hv2-orbit-dot hv2-orbit-dot--white"></div>
+            </div>
+          </div>
+
+          <!-- Center Circular Portrait Wrapper -->
+          <div class="hv2-circular-frame" id="portraitChassis">
+            <div class="hv2-frame-glow"></div>
+            <div class="hv2-circular-img-wrap" id="portraitImgWrap">
+              <img src="assets/images/profile.jpg" alt="Revati Kadam — Portfolio" class="hv2-img" id="portraitImg" loading="eager">
+            </div>
+          </div>
+
+          <!-- Floating badge code symbol (</>) at top-right of circle -->
+          <div class="hv2-code-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+          </div>
+
+          <!-- Status Card floating at bottom-left -->
+          <div class="hv2-status-card" id="statusBadge">
+            <div class="hv2-status-dot-wrap">
+              <span class="hv2-status-pulse"></span>
+            </div>
+            <div class="hv2-status-info">
+              <span class="hv2-status-label">STATUS</span>
+              <span class="hv2-status-text">Available for Opportunities</span>
+            </div>
+          </div>
+        </div>
       </div>
+
+      <!-- BOTTOM: SEGMENTED STATS CARD -->
+      <div class="hero-stats-panel" id="heroStatsPanel">
+        <div class="stat-segment">
+          <div class="stat-icon-wrap">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9"></rect><rect x="14" y="3" width="7" height="5"></rect><rect x="14" y="12" width="7" height="9"></rect><rect x="3" y="16" width="7" height="5"></rect></svg>
+          </div>
+          <div class="stat-content">
+            <span class="stat-num">15+</span>
+            <span class="stat-lbl">Projects Completed</span>
+          </div>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-segment">
+          <div class="stat-icon-wrap">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+          </div>
+          <div class="stat-content">
+            <span class="stat-num">2+</span>
+            <span class="stat-lbl">Years Coding</span>
+          </div>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-segment">
+          <div class="stat-icon-wrap">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+          </div>
+          <div class="stat-content">
+            <span class="stat-num">10+</span>
+            <span class="stat-lbl">Technologies</span>
+          </div>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-segment">
+          <div class="stat-icon-wrap">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="22" y1="12" x2="18" y2="12"></line><line x1="6" y1="12" x2="2" y2="12"></line><line x1="12" y1="6" x2="12" y2="2"></line><line x1="12" y1="22" x2="12" y2="18"></line></svg>
+          </div>
+          <div class="stat-content">
+            <span class="stat-num">Web / DSA</span>
+            <span class="stat-lbl">Current Focus</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- SCROLL DOWN INDICATOR -->
+      <div class="scroll-down-indicator" id="scrollIndicator">
+        <span class="scroll-label">Scroll Down</span>
+        <div class="mouse-icon">
+          <div class="mouse-wheel"></div>
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -215,5 +447,7 @@
 
 <script src="js/script.js"></script>
 <script src="js/navigation.js"></script>
+<script src="js/hero.js"></script>
+<script src="js/preloader.js"></script>
 </body>
 </html>

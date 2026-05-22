@@ -2,13 +2,15 @@ function showSection(id) {
   document.getElementById(id).scrollIntoView({ behavior: "smooth" });
 }
 
-const roles = ["Web Developer", "Programmer", "Problem Solver", "Website Designer", "Tech Enthusiast"];
+const roles = ["digital products", "web applications", "modern websites", "interactive UIs", "clean code"];
 let i = 0, j = 0, del = false;
 
 function type() {
+  const el = document.getElementById("typing");
+  if (!el) return; // Hero V2 uses role drum instead
   let text = roles[i];
   j = del ? j - 1 : j + 1;
-  document.getElementById("typing").innerText = text.substring(0, j);
+  el.innerText = text.substring(0, j);
   if (!del && j === text.length) {
     del = true;
     return setTimeout(type, 1500);
@@ -20,6 +22,7 @@ function type() {
   setTimeout(type, del ? 80 : 180);
 }
 type();
+
 
 (function() {
   const saved = localStorage.getItem("theme");

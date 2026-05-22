@@ -6,9 +6,8 @@
 const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const isMobile = window.matchMedia('(max-width: 767px)').matches;
 
-document.addEventListener('DOMContentLoaded', () => {
-  setTimeout(initHeroV2, 80);
-});
+// Decoupled trigger: initHeroV2() is now called by the preloader script on loading completion.
+
 
 function initHeroV2() {
   if (prefersReduced) {

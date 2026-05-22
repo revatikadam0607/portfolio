@@ -9,7 +9,72 @@
   <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 </head>
-<body>
+<body class="loading">
+
+<!-- Preloader Overlay -->
+<div id="preloader" aria-hidden="false">
+  <!-- Left Curtain Layers -->
+  <div class="preloader-curtain preloader-curtain--left preloader-curtain--layer3"></div>
+  <div class="preloader-curtain preloader-curtain--left preloader-curtain--layer2"></div>
+  <div class="preloader-curtain preloader-curtain--left preloader-curtain--layer1"></div>
+
+  <!-- Right Curtain Layers -->
+  <div class="preloader-curtain preloader-curtain--right preloader-curtain--layer3"></div>
+  <div class="preloader-curtain preloader-curtain--right preloader-curtain--layer2"></div>
+  <div class="preloader-curtain preloader-curtain--right preloader-curtain--layer1"></div>
+
+  <div class="preloader-radial preloader-radial--1"></div>
+  <div class="preloader-radial preloader-radial--2"></div>
+  
+  <div class="preloader-content">
+    <div class="preloader-logo">
+      <span class="pl-char">R</span><span class="pl-char">e</span><span class="pl-char">v</span><span class="pl-char">a</span><span class="pl-char">t</span><span class="pl-char">i</span><span class="pl-space">&nbsp;</span><span class="pl-char-accent">K</span><span class="pl-char-accent">a</span><span class="pl-char-accent">d</span><span class="pl-char-accent">a</span><span class="pl-char-accent">m</span><span class="pl-char-accent">.</span>
+    </div>
+    
+    <div class="preloader-dashboard">
+      <div class="preloader-circle-wrapper">
+        <svg class="preloader-svg-circle" viewBox="0 0 100 100">
+          <circle class="circle-bg" cx="50" cy="50" r="45"></circle>
+          <circle class="circle-progress" id="preloaderCircle" cx="50" cy="50" r="45"></circle>
+        </svg>
+        <div class="preloader-percentage" id="preloaderCounter">
+          <div class="ticker-wrapper">
+            <div class="ticker-column ticker-column--hundreds" id="tickerHundreds">
+              <span>0</span>
+              <span>1</span>
+            </div>
+            <div class="ticker-column ticker-column--tens" id="tickerTens">
+              <span>0</span>
+              <span>1</span>
+              <span>2</span>
+              <span>3</span>
+              <span>4</span>
+              <span>5</span>
+              <span>6</span>
+              <span>7</span>
+              <span>8</span>
+              <span>9</span>
+            </div>
+            <div class="ticker-column ticker-column--ones" id="tickerOnes">
+              <span>0</span>
+              <span>1</span>
+              <span>2</span>
+              <span>3</span>
+              <span>4</span>
+              <span>5</span>
+              <span>6</span>
+              <span>7</span>
+              <span>8</span>
+              <span>9</span>
+            </div>
+            <span class="ticker-percent">%</span>
+          </div>
+        </div>
+      </div>
+      <div class="preloader-status" id="preloaderStatus">CONNECTING TO HOST...</div>
+    </div>
+  </div>
+</div>
 
 <div id="scroll-progress"></div>
 
@@ -383,5 +448,6 @@
 <script src="js/script.js"></script>
 <script src="js/navigation.js"></script>
 <script src="js/hero.js"></script>
+<script src="js/preloader.js"></script>
 </body>
 </html>

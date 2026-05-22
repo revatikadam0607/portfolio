@@ -2065,3 +2065,270 @@ body.light-theme .hv2-btn--ghost:hover {
   background: rgba(0, 0, 0, 0.05);
   border-color: #0f172a;
 }
+
+/* ================= PRELOADER ANIMATION ================= */
+body.loading {
+  overflow: hidden;
+  height: 100vh;
+}
+
+#preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.preloader-curtain {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 56vw; /* Overlap slightly for skews */
+  will-change: transform;
+}
+
+.preloader-curtain--left {
+  left: 0;
+  transform-origin: top left;
+}
+
+.preloader-curtain--right {
+  right: 0;
+  transform-origin: bottom right;
+}
+
+/* Three separate layers of panels */
+.preloader-curtain--layer1 {
+  background: #030712;
+  z-index: 3;
+}
+
+.preloader-curtain--layer2 {
+  background: linear-gradient(135deg, var(--primary), #6366f1, #a855f7);
+  z-index: 2;
+}
+
+.preloader-curtain--layer3 {
+  background: rgba(15, 23, 42, 0.45);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  z-index: 1;
+}
+
+.preloader-curtain--left.preloader-curtain--layer3 {
+  border-right: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.preloader-curtain--right.preloader-curtain--layer3 {
+  border-left: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Background glows for the loader */
+.preloader-radial {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  pointer-events: none;
+  opacity: 0.7;
+  z-index: 4; /* Render on top of curtains but under text content */
+}
+.preloader-radial--1 {
+  width: 400px;
+  height: 400px;
+  top: -10%;
+  left: -10%;
+  background: rgba(99, 102, 241, 0.15);
+}
+.preloader-radial--2 {
+  width: 500px;
+  height: 500px;
+  bottom: -15%;
+  right: -10%;
+  background: rgba(168, 85, 247, 0.12);
+}
+
+.preloader-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 10;
+  width: 90%;
+  max-width: 450px;
+}
+
+.preloader-logo {
+  font-size: clamp(24px, 4vw, 36px);
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #fff;
+  margin-bottom: 28px;
+  display: flex;
+  overflow: hidden;
+}
+
+/* Character animation defaults */
+.pl-char, .pl-char-accent, .pl-space {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(30px);
+  will-change: transform, opacity;
+}
+
+.pl-char-accent {
+  color: var(--primary);
+  text-shadow: 0 0 10px rgba(59, 130, 246, 0.6);
+}
+
+/* Dashboard & Circle Progress Ring */
+.preloader-dashboard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.preloader-circle-wrapper {
+  position: relative;
+  width: 140px;
+  height: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.preloader-svg-circle {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg); /* Start trace at 12 o'clock */
+}
+
+.circle-bg {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.03);
+  stroke-width: 3;
+}
+
+.circle-progress {
+  fill: none;
+  stroke: var(--primary);
+  stroke-width: 4;
+  stroke-linecap: round;
+  stroke-dasharray: 282.7;
+  stroke-dashoffset: 282.7;
+  filter: drop-shadow(0 0 6px var(--primary));
+  will-change: stroke-dashoffset;
+}
+
+/* Odometer mechanical rolling percentage ticker */
+.preloader-percentage {
+  position: relative;
+  z-index: 2;
+}
+
+.ticker-wrapper {
+  display: flex;
+  align-items: flex-start;
+  height: 36px;
+  overflow: hidden;
+  line-height: 36px;
+  font-size: 32px;
+  font-weight: 700;
+  color: #fff;
+  font-family: monospace;
+}
+
+.ticker-column {
+  display: flex;
+  flex-direction: column;
+  will-change: transform;
+}
+
+.ticker-column--hundreds {
+  opacity: 0;
+  width: 0;
+  transition: opacity 0.3s cubic-bezier(0.25, 1, 0.5, 1), width 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.ticker-column--hundreds.visible {
+  opacity: 1;
+  width: 20px;
+}
+
+.ticker-column span {
+  display: block;
+  height: 36px;
+  text-align: center;
+}
+
+.ticker-percent {
+  color: var(--primary);
+  font-size: 18px;
+  margin-left: 2px;
+  align-self: flex-start;
+  line-height: 28px;
+  font-weight: 600;
+  text-shadow: 0 0 6px rgba(59, 130, 246, 0.4);
+}
+
+/* Dynamic status telemetry log */
+.preloader-status {
+  font-family: monospace;
+  font-size: 10px;
+  color: var(--text-muted-2);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  height: 16px;
+  min-width: 280px;
+  text-align: center;
+  opacity: 0.8;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.05);
+  transition: opacity 0.15s ease;
+}
+
+/* ── Light Theme Preloader Overrides ── */
+body.light-theme .preloader-curtain--layer1 {
+  background: #f8fafc;
+}
+
+body.light-theme .preloader-curtain--layer3 {
+  background: rgba(241, 245, 249, 0.45);
+}
+
+body.light-theme .preloader-curtain--left.preloader-curtain--layer3 {
+  border-right: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+body.light-theme .preloader-curtain--right.preloader-curtain--layer3 {
+  border-left: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+body.light-theme .preloader-radial--1 {
+  background: rgba(59, 130, 246, 0.08);
+}
+body.light-theme .preloader-radial--2 {
+  background: rgba(165, 180, 252, 0.06);
+}
+body.light-theme .preloader-logo {
+  color: #0f172a;
+}
+body.light-theme .pl-char-accent {
+  color: var(--primary);
+  text-shadow: 0 0 8px rgba(59, 130, 246, 0.2);
+}
+body.light-theme .circle-bg {
+  stroke: rgba(0, 0, 0, 0.04);
+}
+body.light-theme .ticker-wrapper {
+  color: #0f172a;
+}
+body.light-theme .preloader-status {
+  color: var(--text-muted-1);
+}

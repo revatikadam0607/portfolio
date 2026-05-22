@@ -7,22 +7,59 @@
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/animations.css">
   <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 </head>
 <body>
 
 <div id="scroll-progress"></div>
 
-<nav class="navbar">
-  <div class="logo">Revati Kadam</div>
-  <div class="hamburger" onclick="toggleNavbar()">☰</div>
-  <ul class="nav-links" id="navLinks">
-    <li onclick="showSection('home'); toggleNavbar()">Home</li>
-    <li onclick="showSection('about'); toggleNavbar()">About</li>
-    <li onclick="showSection('skills'); toggleNavbar()">Skills</li>
-    <li onclick="showSection('projects'); toggleNavbar()">Projects</li>
-    <li onclick="showSection('contact'); toggleNavbar()">Contact</li>
-  </ul>
+<nav class="navbar" id="navbar" aria-label="Main Navigation">
+  <div class="nav-bg-gradient"></div>
+  <div class="nav-container">
+    <div class="logo">Revati Kadam<span class="logo-accent">.</span></div>
+    
+    <div class="desktop-nav">
+      <ul class="nav-links" id="desktopNavLinks" role="menubar">
+        <div class="nav-indicator" id="navIndicator"></div>
+        <li role="none"><a href="#home" data-section="home" class="nav-link" role="menuitem" tabindex="0">Home</a></li>
+        <li role="none"><a href="#about" data-section="about" class="nav-link" role="menuitem" tabindex="0">About</a></li>
+        <li role="none"><a href="#skills" data-section="skills" class="nav-link" role="menuitem" tabindex="0">Skills</a></li>
+        <li role="none"><a href="#projects" data-section="projects" class="nav-link" role="menuitem" tabindex="0">Projects</a></li>
+        <li role="none"><a href="#contact" data-section="contact" class="nav-link" role="menuitem" tabindex="0">Contact</a></li>
+      </ul>
+    </div>
+    
+    <button class="hamburger" id="hamburger" aria-label="Toggle navigation" aria-expanded="false" aria-controls="sidebarDrawer">
+      <span class="line line-1"></span>
+      <span class="line line-2"></span>
+      <span class="line line-3"></span>
+    </button>
+  </div>
 </nav>
+
+<div class="nav-overlay" id="navOverlay"></div>
+
+<aside class="sidebar-drawer" id="sidebarDrawer" aria-hidden="true">
+  <div class="sidebar-header">
+    <div class="sidebar-logo">Revati Kadam<span class="logo-accent">.</span></div>
+    <button class="close-sidebar" id="closeSidebar" aria-label="Close navigation">
+      &times;
+    </button>
+  </div>
+  
+  <ul class="sidebar-links" id="sidebarLinks" role="menu">
+    <li role="none"><a href="#home" data-section="home" class="sidebar-link" role="menuitem">Home</a></li>
+    <li role="none"><a href="#about" data-section="about" class="sidebar-link" role="menuitem">About</a></li>
+    <li role="none"><a href="#skills" data-section="skills" class="sidebar-link" role="menuitem">Skills</a></li>
+    <li role="none"><a href="#projects" data-section="projects" class="sidebar-link" role="menuitem">Projects</a></li>
+    <li role="none"><a href="#contact" data-section="contact" class="sidebar-link" role="menuitem">Contact</a></li>
+  </ul>
+  
+  <div class="sidebar-social">
+    <a href="https://github.com/revatikadam0607" target="_blank" aria-label="GitHub">GitHub</a>
+    <a href="https://www.linkedin.com/in/revati-kadam-41818a32a" target="_blank" aria-label="LinkedIn">LinkedIn</a>
+  </div>
+</aside>
 
 <div class="main">
 

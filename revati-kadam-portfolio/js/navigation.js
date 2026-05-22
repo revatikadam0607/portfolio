@@ -60,10 +60,12 @@ function updateActiveIndicator(activeId) {
       if (window.innerWidth >= 768 && link.classList.contains("nav-link")) {
         const linkRect = link.getBoundingClientRect();
         const navRect = document.getElementById("desktopNavLinks").getBoundingClientRect();
+        const dotWidth = 6;
+        const centerX = (linkRect.left - navRect.left) + (linkRect.width / 2) - (dotWidth / 2);
         
         gsap.to(navIndicator, {
-          x: linkRect.left - navRect.left,
-          width: linkRect.width,
+          x: centerX,
+          width: dotWidth,
           opacity: 1,
           duration: 0.4,
           ease: "power3.out",
@@ -99,10 +101,12 @@ desktopNavLinks.forEach(link => {
     if (window.innerWidth >= 768) {
       const linkRect = link.getBoundingClientRect();
       const navRect = document.getElementById("desktopNavLinks").getBoundingClientRect();
+      const dotWidth = 6;
+      const centerX = (linkRect.left - navRect.left) + (linkRect.width / 2) - (dotWidth / 2);
       
       gsap.to(navIndicator, {
-        x: linkRect.left - navRect.left,
-        width: linkRect.width,
+        x: centerX,
+        width: dotWidth,
         opacity: 1,
         duration: 0.3,
         ease: "power2.out",
@@ -125,9 +129,12 @@ if (desktopNavContainer) {
       if (activeLink) {
         const linkRect = activeLink.getBoundingClientRect();
         const navRect = desktopNavContainer.getBoundingClientRect();
+        const dotWidth = 6;
+        const centerX = (linkRect.left - navRect.left) + (linkRect.width / 2) - (dotWidth / 2);
+        
         gsap.to(navIndicator, {
-          x: linkRect.left - navRect.left,
-          width: linkRect.width,
+          x: centerX,
+          width: dotWidth,
           opacity: 1,
           duration: 0.4,
           ease: "power3.out",

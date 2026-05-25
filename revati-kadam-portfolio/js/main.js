@@ -2,14 +2,69 @@
 fetch("data/skills.json")
   .then(res => res.json())
   .then(data => {
-    const container = document.getElementById("skills-container");
 
-    data.forEach(skill => {
-      const btn = document.createElement("button");
-      btn.innerText = skill;
-      btn.className = "skills-btn";
-      container.appendChild(btn);
+    const container =
+      document.getElementById("skills-container");
+
+    const tabs =
+      document.querySelectorAll(".tab-btn");
+
+    function renderSkills(category) {
+
+      container.innerHTML = "";
+
+      data[category].forEach(skill => {
+
+        const card = document.createElement("div");
+
+        card.className =
+          skill.featured
+          ? "skill-card featured"
+          : "skill-card";
+
+        card.innerHTML = `
+          <div class="skill-card-content">
+
+            <h3>${skill.name}</h3>
+
+            ${
+              skill.level
+                ? `<span class="skill-level">
+                    ${skill.level}
+                  </span>`
+                : ""
+            }
+
+          </div>
+        `;
+
+        container.appendChild(card);
+
+      });
+    }
+
+    // Default category
+    renderSkills("frontend");
+
+    tabs.forEach(tab => {
+
+      tab.addEventListener("click", () => {
+
+        tabs.forEach(btn =>
+          btn.classList.remove("active")
+        );
+
+        tab.classList.add("active");
+
+        const category =
+          tab.dataset.category;
+
+        renderSkills(category);
+
+      });
+
     });
+
   });
 
 // Load projects

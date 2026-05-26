@@ -1,44 +1,52 @@
 function showSection(id) {
-  document.getElementById(id).scrollIntoView({ behavior: "smooth" });
+  document.getElementById(id).scrollIntoView({
+    behavior: "smooth"
+  });
 }
 
-const roles = ["Web Developer", "Programmer", "Problem Solver", "Website Designer", "Tech Enthusiast"];
+// Typing
+const roles = ["Programmer", "Student", "Web Developer", "Website Designer", "Problem Solver", "Tech Enthusiast"];
 let i = 0, j = 0, del = false;
 
 function type() {
   let text = roles[i];
   j = del ? j - 1 : j + 1;
+
   document.getElementById("typing").innerText = text.substring(0, j);
+
   if (!del && j === text.length) {
     del = true;
     return setTimeout(type, 1500);
   }
+
   if (del && j === 0) {
     del = false;
     i = (i + 1) % roles.length;
   }
+
   setTimeout(type, del ? 80 : 180);
 }
 type();
 
-(function() {
-  const saved = localStorage.getItem("theme");
-  if (saved === "light") document.body.classList.add("light-theme");
-})();
-
+// Theme
 function setTheme(mode) {
   if (mode === "light") {
-    document.body.classList.add("light-theme");
+    document.documentElement.style.setProperty('--bg', '#f8fafc');
+    document.documentElement.style.setProperty('--text', '#000');   // BLACK text
+    document.documentElement.style.setProperty('--card', '#e2e8f0');
   } else {
-    document.body.classList.remove("light-theme");
+    document.documentElement.style.setProperty('--bg', '#0f172a');
+    document.documentElement.style.setProperty('--text', '#fff');   // WHITE text
+    document.documentElement.style.setProperty('--card', '#1e293b');
   }
-  localStorage.setItem("theme", mode);
 }
 
+// Color
 function setColor(color) {
   document.documentElement.style.setProperty('--primary', color);
 }
 
+// Settings
 function toggleSettings() {
   document.getElementById("settingsMenu").classList.toggle("show");
 }
@@ -50,6 +58,7 @@ document.addEventListener("click", function (e) {
   }
 });
 
+// ❤️ Spark
 document.addEventListener("mousemove", e => {
   const s = document.createElement("div");
   s.className = "spark";
@@ -59,13 +68,25 @@ document.addEventListener("mousemove", e => {
   setTimeout(() => s.remove(), 100);
 });
 
-// Hamburger toggle
-function toggleNavbar() {
-  const links = document.getElementById("navLinks");
-  if (window.innerWidth <= 768) {
-    links.classList.toggle("show");
-  }
-}
+// Skills
+fetch("data/skills.json")
+  .then(res => res.json())
+  .then(data => {
+    const container = document.getElementById("skills-container");
+    container.innerHTML = "";
+
+    data.forEach(skill => {
+      const card = document.createElement("div");
+      card.className = "skill-card";
+
+      card.innerHTML = `
+      <img src="${skillIcons[skill] || ''}" />
+      <p>${skill}</p>
+    `;
+
+      container.appendChild(card);
+    });
+  });
 const skillIcons = {
   "React": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
   "Node.js": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
@@ -213,52 +234,63 @@ fetch("data/projects.json")
   .then(res => res.json())
   .then(data => {
     const c = document.getElementById("projects-container");
-    c.innerHTML = "";
+
+    c.innerHTML = ""; // clear first
+
     data.forEach(p => {
-      const d = document.createElement("div");
-      d.className = "project-card";
-      const techTags = (p.tech || []).map(t => `<span class="tech-tag">${t}</span>`).join("");
+      let d = document.createElement("div");
+
       d.innerHTML = `
-        <div class="project-thumb">
-          <img src="${p.image}" alt="${p.name}" onerror="this.parentElement.style.background='#1e3a5f'; this.style.display='none'">
-        </div>
-        <div class="project-info">
-          <h3>${p.name}</h3>
-          <p>${p.description || ""}</p>
-          <div class="tech-tags">${techTags}</div>
-          <div class="project-links">
-            <a href="${p.live}" target="_blank">Live ↗</a>
-            <a href="${p.github}" target="_blank">GitHub ↗</a>
-          </div>
-        </div>
-      `;
+      <h3>${p.name}</h3>
+      <img src="${p.image}" width="300" onerror="this.src='https://via.placeholder.com/300'">
+      <br>
+      <a href="${p.live}" target="_blank">Live</a> |
+      <a href="${p.github}" target="_blank">GitHub</a>
+    `;
+
       c.appendChild(d);
     });
   })
-  .catch(() => {
-    document.getElementById("projects-container").innerHTML = "<p>Could not load projects.</p>";
+  .catch(err => {
+    document.getElementById("projects-container").innerHTML = "Error loading projects";
   });
+// EMAILJS INIT (IMPORTANT)
+(function () {
+  emailjs.init("YOUR_PUBLIC_KEY"); // replace
+})();
 
-// ── EMAILJS ──
+// CONTACT FORM SEND
+document.getElementById("contact-form").addEventListener("submit", function (e) {
+  e.preventDefault();
+
+  emailjs.sendForm("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", this)
+    .then(function () {
+      alert("Message sent successfully!");
+      this.reset();
+    }).catch((error) => {
+      console.log("Error:", error);
+      alert("Failed to send message.");
+    });
+});
+
+// Initialize EmailJS
 (function () {
   emailjs.init("kqnCcPYqtdwl_Oaqt");
 })();
 
+// Send form
 document.getElementById("contact-form").addEventListener("submit", function (e) {
   e.preventDefault();
-  const btn = this.querySelector("button");
-  btn.textContent = "Sending...";
-  btn.disabled = true;
 
   emailjs.sendForm("service_08nkbcb", "template_2yrnipb", this)
-    .then(() => {
+    .then(function () {
       alert("Message sent successfully!");
-      this.reset();
-      btn.textContent = "Send Message";
-      btn.disabled = false;
-    }, () => {
-      alert("Failed to send. Please try again.");
-      btn.textContent = "Send Message";
-      btn.disabled = false;
+    }, function (error) {
+      alert("Failed to send message.");
     });
 });
+
+function toggleNavbar() {
+  document.getElementById("navLinks").classList.toggle("show");
+}
+

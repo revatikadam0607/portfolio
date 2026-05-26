@@ -1,97 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Revati Kadam Portfolio</title>
+  
+  <title>Revati Kadam | Computer Science Student & Web Developer Portfolio</title>
+  <meta name="description" content="Portfolio of Revati Kadam, a passionate Computer Science student and Web Developer specializing in clean, responsive, and user-friendly web applications.">
+  <meta name="keywords" content="Revati Kadam, Web Developer, Portfolio, Computer Science, JavaScript, React, Frontend Developer">
+  <meta name="author" content="Revati Kadam">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://revati-kadam-portfolio-cse.netlify.app/">
+  <meta property="og:title" content="Revati Kadam | Personal Portfolio">
+  <meta property="og:description" content="Showcasing my web development projects, technical skills, and experience.">
+  <meta property="og:image" content="assets/images/portfolio-preview.png">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:title" content="Revati Kadam | Personal Portfolio">
+  <meta property="twitter:description" content="Showcasing my web development projects, technical skills, and experience.">
+
   <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/animations.css">
-  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+
+  <!-- EmailJS SDK -->
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js" defer></script>
 </head>
+
 <body>
 
-<div id="scroll-progress"></div>
+  <!-- ================= NAVIGATION ================= -->
+  <header>
+    <nav class="navbar" aria-label="Main Navigation">
+      <div class="logo">Revati Kadam</div>
 
-<nav class="navbar">
-  <div class="logo">Revati Kadam</div>
-  <div class="hamburger" onclick="toggleNavbar()">☰</div>
-  <ul class="nav-links" id="navLinks">
-    <li onclick="showSection('home'); toggleNavbar()">Home</li>
-    <li onclick="showSection('about'); toggleNavbar()">About</li>
-    <li onclick="showSection('skills'); toggleNavbar()">Skills</li>
-    <li onclick="showSection('projects'); toggleNavbar()">Projects</li>
-    <li onclick="showSection('contact'); toggleNavbar()">Contact</li>
-  </ul>
-</nav>
+      <button class="hamburger" onclick="toggleNavbar()" aria-label="Toggle Navigation Menu" aria-expanded="false" aria-controls="navLinks">
+        ☰
+      </button>
 
-<div class="main">
+      <ul class="nav-links" id="navLinks">
+        <li><button onclick="showSection('home'); toggleNavbar()" aria-label="Navigate to Home">Home</button></li>
+        <li><button onclick="showSection('about'); toggleNavbar()" aria-label="Navigate to About">About</button></li>
+        <li><button onclick="showSection('skills'); toggleNavbar()" aria-label="Navigate to Skills">Skills</button></li>
+        <li><button onclick="showSection('projects'); toggleNavbar()" aria-label="Navigate to Projects">Projects</button></li>
+        <li><button onclick="showSection('contact'); toggleNavbar()" aria-label="Navigate to Contact">Contact</button></li>
+      </ul>
+    </nav>
+  </header>
 
-  <section id="home" class="section">
-    <div class="hero-content">
-      <div class="hero-text">
-        <p class="hello-tag">HELLO!</p>
-        <h1>I am Revati Kadam</h1>
-        <h2>I am a <span id="typing"></span></h2>
-        <p class="hero-desc">
-          A passionate Computer Science student who loves building clean,
-          responsive web apps and solving real-world problems through code.
-        </p>
-        <div class="hero-btns">
-          <a href="#projects" onclick="showSection('projects')" class="btn-primary">View Projects</a>
-          <a href="assets/resume/revati-kadam-resume.pdf" download class="btn-outline">Download Resume</a>
-        </div>
-        <div class="hero-social">
-          <a href="https://github.com/revatikadam0607" target="_blank">
-            <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub">
-          </a>
-          <a href="https://www.linkedin.com/in/revati-kadam-41818a32a" target="_blank">
-            <img src="https://cdn-icons-png.flaticon.com/24/174/174857.png" alt="LinkedIn">
-          </a>
-          <a href="https://leetcode.com/u/Revati0607/" target="_blank">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/1/19/LeetCode_logo_black.png" alt="LeetCode">
-          </a>
-        </div>
-      </div>
-      <div class="hero-image">
-        <div class="hero-image">
-          <div class="hero-img-circle">
-            <img src="assets/images/profile.jpg" alt="Rkimg">
-          </div>
-        </div> 
-      </div>
-    </div>
-  </section>
+  <div class="social-top" aria-label="Social Profiles">
+    <a href="https://github.com/revatikadam0607" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile">
+      <img src="https://www.vectorlogo.zone/logos/github/github-icon.svg" alt="GitHub">
+    </a>
 
-  <section id="about" class="section">
-    <div class="about-grid">
-      <div class="about-left">
-        <h2>About</h2>
-        <p>
-          I'm a passionate and driven Computer Science student with a strong interest
-          in Web Development, Software Engineering, and problem-solving. I enjoy building
-          clean, responsive, and user-friendly web applications while continuously improving
-          my skills in technologies like HTML, CSS, JavaScript, and backend development.
-          Alongside development, I actively practice Data Structures and Algorithms to
-          strengthen my logical thinking and coding abilities.
-        </p>
-        <div class="about-tags">
-          <span class="about-tag">Web Development</span>
-          <span class="about-tag">Problem Solving</span>
-          <span class="about-tag">DSA</span>
-          <span class="about-tag">Open Source</span>
-        </div>
-        <a href="assets/resume/revati-kadam-resume.pdf" download class="resume-btn">
-          ↓ Download Resume
-        </a>
-      </div>
-      <div class="about-right">
-        <div class="stat-card"><div class="stat-num">15+</div><div class="stat-lbl">Skills Learned</div></div>
-        <div class="stat-card"><div class="stat-num">5+</div><div class="stat-lbl">Projects Built</div></div>
-        <div class="stat-card"><div class="stat-num">2+</div><div class="stat-lbl">Years Coding</div></div>
-        <div class="stat-card"><div class="stat-num">100+</div><div class="stat-lbl">DSA Problems</div></div>
-      </div>
-    </div>
-  </section>
+    <a href="https://www.linkedin.com/in/revati-kadam-41818a32a" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile">
+      <img src="https://www.vectorlogo.zone/logos/linkedin/linkedin-icon.svg" alt="LinkedIn">
+    </a>
 
   <section id="skills" class="section">
 
@@ -168,52 +133,176 @@
 
 </section>
 
-  <section id="projects" class="section">
-    <h2>Projects</h2>
-    <div id="projects-container"></div>
-  </section>
+  <!-- ================= MAIN CONTENT ================= -->
+  <main class="main">
 
-  <section id="contact" class="section">
-    <h2>Contact Me</h2>
-    <div class="contact-grid">
-      <div class="contact-info">
-        <p>Feel free to reach out — I'm always open to new opportunities and collaborations.</p>
-        <div class="contact-links">
-          <a href="https://github.com/revatikadam0607" target="_blank">GitHub ↗</a>
-          <a href="https://www.linkedin.com/in/revati-kadam-41818a32a" target="_blank">LinkedIn ↗</a>
-          <a href="https://leetcode.com/u/Revati0607/" target="_blank">LeetCode ↗</a>
+    <section id="home" class="section">
+      <h1>Hello! I am <span class="highlight">Revati Kadam</span></h1>
+      <h2>I am a <span id="typing"></span></h2>
+    </section>
+
+    <section id="about" class="section">
+      <h2>About Me</h2>
+      <p>
+        I’m a passionate and driven Computer Science student with a strong interest in Web Development, Software
+        Engineering, and problem-solving.
+        I enjoy building clean, responsive, and user-friendly web applications while continuously improving my skills in
+        technologies like HTML, CSS, JavaScript, and backend development.
+        Alongside development, I actively practice Data Structures and Algorithms to strengthen my logical thinking and
+        coding abilities.
+      </p>
+
+      <a href="assets/resume/revati-kadam-resume.pdf" download class="resume-btn" aria-label="Download Resume PDF">
+        Download Resume
+      </a>
+    </section>
+
+    <section id="skills" class="section">
+      <h2>Technical Skills</h2>
+      <div id="skills-container" class="skills-grid"></div>
+    </section>
+
+    <section id="projects" class="section">
+      <h2>Featured Projects</h2>
+      <div id="projects-container" class="projects-grid"></div>
+    </section>
+
+    <section id="contact" class="section">
+      <h2>Contact Me</h2>
+      <form id="contact-form">
+        <div class="form-group">
+          <input type="text" name="name" placeholder="Full Name" required aria-label="Full Name">
+        </div>
+        <div class="form-group">
+          <input type="email" name="email" placeholder="Email Address" required aria-label="Email Address">
+        </div>
+        <div class="form-group">
+          <input type="text" name="subject" placeholder="Subject" aria-label="Subject">
+        </div>
+        <div class="form-group">
+          <textarea name="message" placeholder="Your Message" required aria-label="Your Message"></textarea>
+        </div>
+        <button type="submit" class="submit-btn">Send Message</button>
+      </form>
+    </section>
+
+    <!-- ================= FAQ SECTION ================= -->
+    <section id="faq" class="section">
+      <h2>Frequently Asked Questions</h2>
+      <div class="accordion">
+        <div class="accordion-item">
+          <button class="accordion-header" onclick="toggleAccordion(this)" aria-expanded="false">
+            <span>🚀 What technologies do you specialize in?</span>
+            <span class="icon" aria-hidden="true">+</span>
+          </button>
+          <div class="accordion-content">
+            <p>I specialize in Frontend development with HTML, CSS, JavaScript, and React. I also have experience with
+              Node.js, Java, and Database Management.</p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-header" onclick="toggleAccordion(this)" aria-expanded="false">
+            <span>📂 Are your projects open source?</span>
+            <span class="icon" aria-hidden="true">+</span>
+          </button>
+          <div class="accordion-content">
+            <p>Yes! Most of my personal projects are available on GitHub. You can check the 'Documentation' or my GitHub
+              profile for licenses.</p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-header" onclick="toggleAccordion(this)" aria-expanded="false">
+            <span>🤝 Are you open for internships or collaboration?</span>
+            <span class="icon" aria-hidden="true">+</span>
+          </button>
+          <div class="accordion-content">
+            <p>Absolutely! I'm always looking for opportunities to learn and contribute. Feel free to reach out via the
+              Contact form.</p>
+          </div>
         </div>
       </div>
-      <form id="contact-form">
-        <input type="text" name="name" placeholder="Full Name" required>
-        <input type="email" name="email" placeholder="Email" required>
-        <input type="text" name="subject" placeholder="Subject">
-        <textarea name="message" placeholder="Message" required></textarea>
-        <button type="submit">Send Message</button>
-      </form>
+    </section>
+
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><button onclick="showSection('home')">Home</button></li>
+          <li><button onclick="showSection('projects')">Projects</button></li>
+          <li><button onclick="showSection('contact')">Contact</button></li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h3>Resources</h3>
+        <ul>
+          <li><button onclick="openOverlay('privacy')">🛡️ Privacy Policy</button></li>
+          <li><button onclick="openOverlay('terms')">⚖️ Terms of Service</button></li>
+          <li><button onclick="openOverlay('docs')">📖 Documentation</button></li>
+          <li><button onclick="showSection('faq')">❓ FAQs</button></li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h3>Connect</h3>
+        <div class="footer-socials">
+          <a href="https://github.com/revatikadam0607" target="_blank" rel="noopener noreferrer"
+            aria-label="GitHub Profile">GitHub</a>
+          <a href="https://www.linkedin.com/in/revati-kadam-41818a32a" target="_blank" rel="noopener noreferrer"
+            aria-label="LinkedIn Profile">LinkedIn</a>
+        </div>
+      </div>
     </div>
-  </section>
+    <div class="footer-bottom">
+      <p>&copy; 2024 Revati Kadam. Built with Passion & Caffeine.</p>
+    </div>
+  </footer>
 
-</div>
+  <!-- ================= SETTINGS ================= -->
+  <div class="settings" onclick="toggleSettings()" role="button" aria-label="Open Appearance Settings" tabindex="0">
+    ⚙️
+    <div class="menu" id="settingsMenu" role="region" aria-label="Theme and Color Settings">
+      <p>Theme</p>
+      <div class="theme-options">
+        <button onclick="setTheme('dark')" aria-label="Switch to Dark Theme">🌙</button>
+        <button onclick="setTheme('light')" aria-label="Switch to Light Theme">☀️</button>
+      </div>
 
-<div class="settings" onclick="toggleSettings()">
-  <span class="settings-icon">⚙️</span>
-  <div class="menu" id="settingsMenu">
-    <p>Theme</p>
-    <button onclick="setTheme('dark')">🌙</button>
-    <button onclick="setTheme('light')">☀️</button>
-    <p>Colors</p>
-    <div class="color-options">
-      <span style="background:#3b82f6" onclick="setColor('#3b82f6')"></span>
-      <span style="background:#22c55e" onclick="setColor('#22c55e')"></span>
-      <span style="background:#ec4899" onclick="setColor('#ec4899')"></span>
-      <span style="background:#f97316" onclick="setColor('#f97316')"></span>
-      <span style="background:#ef4444" onclick="setColor('#ef4444')"></span>
+      <p>Accent Colors</p>
+      <div class="color-options">
+        <span style="background:#3b82f6" onclick="setColor('#3b82f6')" role="button"
+          aria-label="Set blue accent color"></span>
+        <span style="background:#22c55e" onclick="setColor('#22c55e')" role="button"
+          aria-label="Set green accent color"></span>
+        <span style="background:#ec4899" onclick="setColor('#ec4899')" role="button"
+          aria-label="Set pink accent color"></span>
+        <span style="background:#f97316" onclick="setColor('#f97316')" role="button"
+          aria-label="Set orange accent color"></span>
+        <span style="background:#ef4444" onclick="setColor('#ef4444')" role="button"
+          aria-label="Set red accent color"></span>
+      </div>
     </div>
   </div>
-</div>
 
-<script src="js/script.js"></script>
-<script src="js/navigation.js"></script>
+  <!-- ================= OVERLAY SYSTEM ================= -->
+  <div id="docs-overlay" class="overlay" role="dialog" aria-modal="true" aria-labelledby="overlay-title">
+    <div class="overlay-card">
+      <button class="close-btn" onclick="closeOverlay()" aria-label="Close Overlay">&times;</button>
+      <div id="overlay-content">
+        <!-- Content injected via JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= SCRIPTS ================= -->
+  <script src="js/script.js"></script>
+
 </body>
+
 </html>

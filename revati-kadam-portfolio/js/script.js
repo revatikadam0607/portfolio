@@ -1,52 +1,136 @@
+// --- Navigation & Sections ---
 function showSection(id) {
-  document.getElementById(id).scrollIntoView({ behavior: "smooth" });
+  const section = document.getElementById(id);
+  if (section) {
+    section.scrollIntoView({ behavior: "smooth" });
+    // Update URL hash without jumping
+    history.pushState(null, null, `#${id}`);
+    updateActiveLink(id);
+  }
 }
 
-const roles = ["Web Developer", "Programmer", "Problem Solver", "Website Designer", "Tech Enthusiast"];
+function toggleNavbar() {
+  const navLinks = document.getElementById("navLinks");
+  const hamburger = document.querySelector(".hamburger");
+  const isExpanded = navLinks.classList.toggle("show");
+  
+  if (hamburger) {
+    hamburger.setAttribute("aria-expanded", isExpanded);
+  }
+}
+
+function updateActiveLink(id) {
+  const buttons = document.querySelectorAll(".nav-links li button");
+  buttons.forEach(btn => {
+    const onClick = btn.getAttribute("onclick");
+    if (onClick && onClick.includes(`'${id}'`)) {
+      btn.classList.add("active");
+    } else {
+      btn.classList.remove("active");
+    }
+  });
+}
+
+// Navbar Scroll Effect
+window.addEventListener("scroll", () => {
+  const navbar = document.querySelector(".navbar");
+  if (window.scrollY > 50) {
+    navbar.classList.add("scrolled");
+  } else {
+    navbar.classList.remove("scrolled");
+  }
+});
+
+// Section Observer for Active Links
+function initSectionObserver() {
+  const sections = document.querySelectorAll(".section");
+  const options = {
+    threshold: 0.6
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+        updateActiveLink(entry.target.id);
+      }
+    });
+  }, options);
+
+  sections.forEach(section => {
+    observer.observe(section);
+  });
+}
+
+// --- Typing Animation ---
+const roles = ["Programmer", "Student", "Web Developer", "Website Designer", "Problem Solver", "Tech Enthusiast"];
 let i = 0, j = 0, del = false;
 
 function type() {
+  const typingElement = document.getElementById("typing");
+  if (!typingElement) return;
+
   let text = roles[i];
   j = del ? j - 1 : j + 1;
-  document.getElementById("typing").innerText = text.substring(0, j);
+
+  typingElement.innerText = text.substring(0, j);
+
   if (!del && j === text.length) {
     del = true;
     return setTimeout(type, 1500);
   }
+
   if (del && j === 0) {
     del = false;
     i = (i + 1) % roles.length;
   }
+
   setTimeout(type, del ? 80 : 180);
 }
-type();
 
-(function() {
-  const saved = localStorage.getItem("theme");
-  if (saved === "light") document.body.classList.add("light-theme");
-})();
-
+// --- Theme & Customization ---
 function setTheme(mode) {
   if (mode === "light") {
-    document.body.classList.add("light-theme");
+    document.documentElement.style.setProperty('--bg', '#f8fafc');
+    document.documentElement.style.setProperty('--text', '#000');
+    document.documentElement.style.setProperty('--card', '#e2e8f0');
   } else {
-    document.body.classList.remove("light-theme");
+    document.documentElement.style.setProperty('--bg', '#0f172a');
+    document.documentElement.style.setProperty('--text', '#fff');
+    document.documentElement.style.setProperty('--card', '#1e293b');
   }
-  localStorage.setItem("theme", mode);
+  localStorage.setItem('portfolio-theme', mode);
 }
 
 function setColor(color) {
   document.documentElement.style.setProperty('--primary', color);
+  localStorage.setItem('portfolio-primary-color', color);
 }
 
 function toggleSettings() {
   document.getElementById("settingsMenu").classList.toggle("show");
 }
 
+// Initialize Theme from LocalStorage
+function initCustomization() {
+  const savedTheme = localStorage.getItem('portfolio-theme') || 'dark';
+  const savedColor = localStorage.getItem('portfolio-primary-color') || '#3b82f6';
+  
+  setTheme(savedTheme);
+  setColor(savedColor);
+}
+
+// --- Interactive Effects ---
 document.addEventListener("click", function (e) {
   const settings = document.querySelector(".settings");
-  if (!settings.contains(e.target)) {
+  if (settings && !settings.contains(e.target)) {
     document.getElementById("settingsMenu").classList.remove("show");
+  }
+
+  // Close nav on mobile if clicking link
+  const navLinks = document.getElementById("navLinks");
+  if (navLinks.classList.contains("show") && e.target.closest(".nav-links li button")) {
+    toggleNavbar();
   }
 });
 
@@ -59,13 +143,7 @@ document.addEventListener("mousemove", e => {
   setTimeout(() => s.remove(), 100);
 });
 
-// Hamburger toggle
-function toggleNavbar() {
-  const links = document.getElementById("navLinks");
-  if (window.innerWidth <= 768) {
-    links.classList.toggle("show");
-  }
-}
+// --- Data Fetching ---
 const skillIcons = {
   "React": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
   "Node.js": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
@@ -222,43 +300,74 @@ fetch("data/projects.json")
         <div class="project-thumb">
           <img src="${p.image}" alt="${p.name}" onerror="this.parentElement.style.background='#1e3a5f'; this.style.display='none'">
         </div>
-        <div class="project-info">
+      `).join('');
+    }
+
+    // Load Projects
+    const projectsRes = await fetch("data/projects.json");
+    const projects = await projectsRes.json();
+    const projectsContainer = document.getElementById("projects-container");
+    if (projectsContainer) {
+      projectsContainer.innerHTML = projects.map(p => `
+        <div class="project-card">
+          <img src="${p.image}" alt="${p.name} preview" onerror="this.src='https://via.placeholder.com/350x220'">
           <h3>${p.name}</h3>
-          <p>${p.description || ""}</p>
-          <div class="tech-tags">${techTags}</div>
           <div class="project-links">
-            <a href="${p.live}" target="_blank">Live ↗</a>
-            <a href="${p.github}" target="_blank">GitHub ↗</a>
+            <a href="${p.live}" target="_blank" rel="noopener noreferrer">Live Demo</a>
+            <a href="${p.github}" target="_blank" rel="noopener noreferrer">GitHub</a>
           </div>
         </div>
-      `;
-      c.appendChild(d);
-    });
-  })
-  .catch(() => {
-    document.getElementById("projects-container").innerHTML = "<p>Could not load projects.</p>";
-  });
+      `).join('');
+    }
+  } catch (err) {
+    console.error("Error loading portfolio data:", err);
+  }
+}
 
-// ── EMAILJS ──
-(function () {
+// --- Contact Form ---
+function initContactForm() {
+  const contactForm = document.getElementById("contact-form");
+  if (!contactForm) return;
+
+  // Initialize EmailJS with Public Key
   emailjs.init("kqnCcPYqtdwl_Oaqt");
-})();
 
-document.getElementById("contact-form").addEventListener("submit", function (e) {
-  e.preventDefault();
-  const btn = this.querySelector("button");
-  btn.textContent = "Sending...";
-  btn.disabled = true;
+  contactForm.addEventListener("submit", function (e) {
+    e.preventDefault();
+    const submitBtn = this.querySelector('button[type="submit"]');
+    const originalBtnText = submitBtn.innerText;
+    
+    submitBtn.innerText = "Sending...";
+    submitBtn.disabled = true;
 
-  emailjs.sendForm("service_08nkbcb", "template_2yrnipb", this)
-    .then(() => {
-      alert("Message sent successfully!");
-      this.reset();
-      btn.textContent = "Send Message";
-      btn.disabled = false;
-    }, () => {
-      alert("Failed to send. Please try again.");
-      btn.textContent = "Send Message";
-      btn.disabled = false;
-    });
+    emailjs.sendForm("service_08nkbcb", "template_2yrnipb", this)
+      .then(() => {
+        alert("Message sent successfully!");
+        this.reset();
+      })
+      .catch((error) => {
+        console.error("EmailJS Error:", error);
+        alert("Failed to send message. Please try again later.");
+      })
+      .finally(() => {
+        submitBtn.innerText = originalBtnText;
+        submitBtn.disabled = false;
+      });
+  });
+}
+
+// --- Global Initialization ---
+document.addEventListener("DOMContentLoaded", () => {
+  initCustomization();
+  type();
+  loadData();
+  initContactForm();
+  initSectionObserver();
+
+  // Handle Initial Hash
+  const hash = window.location.hash.substring(1);
+  if (hash) {
+    setTimeout(() => showSection(hash), 500);
+  }
 });
+

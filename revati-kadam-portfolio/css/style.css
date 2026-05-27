@@ -58,6 +58,16 @@ body {
   color: var(--primary);
 }
 
+.hero-social{
+   position: fixed;
+   transition: transform 0.3s ease-in-out;
+  z-index: 1000;
+}
+
+.hero-social.header-hidden {
+  transform: translateY(-100%);
+}
+
 .hamburger {
   font-size: 26px;
   cursor: pointer;
@@ -78,7 +88,7 @@ body {
 
 .nav-links li {
   cursor: pointer;
-  color: var(--text);
+  color:    white ;
   font-size: 15px;
   padding: 7px 16px;
   border-radius: 8px;
@@ -95,7 +105,7 @@ body {
 .nav-links li:hover,
 .nav-links li:hover a {
   background: var(--primary);
-  color: #fff;
+  color: white;
 }
 
 /* ── SECTION BASE ── */

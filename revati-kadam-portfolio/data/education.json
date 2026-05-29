@@ -1,0 +1,25 @@
+[
+  {
+    "degree": "Bachelor of Computer Science",
+    "institution": "Your University Name",
+    "duration": "timeline of your degree (e.g., 2022 - 2026)",
+    "gpa": "your GPA (if applicable)",
+    "highlights": [
+      "your core subjects ",
+      "Strong focus on Web Development & Software Engineering",
+      "Active participant in coding competitions and hackathons",
+      "Maintaining strong academic performance in all coursework"
+    ]
+  },
+  {
+    "degree": "Higher Secondary (12th)",
+    "institution": "Your School Name",
+    "duration": "timeline of your education (e.g., 2020 - 2022)",
+    "highlights": [
+      "Science Stream with (your scores/grades)",
+      "Strong foundation in your core subjects (e.g., Physics, Chemistry, Mathematics)",
+      "Completed first web development projects during school",
+      "Participated in science exhibitions and tech clubs"
+    ]
+  }
+]

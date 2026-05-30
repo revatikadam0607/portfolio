@@ -1,90 +1,73 @@
-// Load skills
-fetch("data/skills.json")
+// Load experience
+fetch("data/experience.json")
   .then(res => res.json())
   .then(data => {
+    const container = document.getElementById("experience-container");
 
-    const container =
-      document.getElementById("skills-container");
+    data.forEach(experience => {
+      const item = document.createElement("div");
+      item.className = "timeline-item";
 
-    const tabs =
-      document.querySelectorAll(".tab-btn");
+      const achievementsList = experience.achievements
+        .map(achievement => `<li>${achievement}</li>`)
+        .join("");
 
-    function renderSkills(category) {
+      const techTags = experience.tech
+        .map(tech => `<span class="timeline-tag">${tech}</span>`)
+        .join("");
 
-      container.innerHTML = "";
-
-      data[category].forEach(skill => {
-
-        const card = document.createElement("div");
-
-        card.className =
-          skill.featured
-          ? "skill-card featured"
-          : "skill-card";
-
-        card.innerHTML = `
-          <div class="skill-card-content">
-
-            <h3>${skill.name}</h3>
-
-            ${
-              skill.level
-                ? `<span class="skill-level">
-                    ${skill.level}
-                  </span>`
-                : ""
-            }
-
+      item.innerHTML = `
+        <div class="timeline-item-header">
+          <div>
+            <h3 class="timeline-item-title">${experience.title}</h3>
+            <p class="timeline-item-subtitle">${experience.company}</p>
           </div>
-        `;
-
-        container.appendChild(card);
-
-      });
-    }
-
-    // Default category
-    renderSkills("frontend");
-
-    tabs.forEach(tab => {
-
-      tab.addEventListener("click", () => {
-
-        tabs.forEach(btn =>
-          btn.classList.remove("active")
-        );
-
-        tab.classList.add("active");
-
-        const category =
-          tab.dataset.category;
-
-        renderSkills(category);
-
-      });
-
-    });
-
-  });
-
-// Load projects
-fetch("data/projects.json")
-  .then(res => res.json())
-  .then(data => {
-    const container = document.getElementById("projects-container");
-
-    data.forEach(project => {
-      const div = document.createElement("div");
-
-      div.innerHTML = `
-        <h3>${project.name}</h3>
-        <img src="${project.image}" width="300">
-        <br>
-        <a href="${project.live}">Live</a> |
-        <a href="${project.github}">GitHub</a>
+          <span class="timeline-item-duration">${experience.duration}</span>
+        </div>
+        <p class="timeline-item-description">${experience.description}</p>
+        <ul class="timeline-item-list">
+          ${achievementsList}
+        </ul>
+        <div class="timeline-item-tags">
+          ${techTags}
+        </div>
       `;
 
-      container.appendChild(div);
+      container.appendChild(item);
+    });
+  });
+
+// Load education
+fetch("data/education.json")
+  .then(res => res.json())
+  .then(data => {
+    const container = document.getElementById("education-container");
+
+    data.forEach(edu => {
+      const item = document.createElement("div");
+      item.className = "timeline-item";
+
+      const highlightsList = edu.highlights
+        .map(highlight => `<li>${highlight}</li>`)
+        .join("");
+
+      const gpaDisplay = edu.gpa ? `<span class="education-gpa">GPA: ${edu.gpa}</span>` : "";
+
+      item.innerHTML = `
+        <div class="timeline-item-header">
+          <div>
+            <h3 class="timeline-item-title">${edu.degree}</h3>
+            <p class="timeline-item-subtitle">${edu.institution}</p>
+          </div>
+          <span class="timeline-item-duration">${edu.duration}</span>
+        </div>
+        ${gpaDisplay}
+        <ul class="timeline-item-list">
+          ${highlightsList}
+        </ul>
+      `;
+
+      container.appendChild(item);
     });
   });
   

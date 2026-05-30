@@ -1,0 +1,28 @@
+[
+  {
+    "title": "Full Stack Developer",
+    "company": "(Your Company Name or Internship)",
+    "duration": "timeline of your experience if any (e.g., 2022 - Present)",
+    "description": "Developed and maintained responsive web applications with modern tech stack. Collaborated with team to deliver high-quality solutions for employee tracking and management.",
+    "achievements": [
+      "Built comprehensive employee tracking portal with real-time data management",
+      "Implemented secure authentication and role-based dashboard features",
+      "Improved application performance by 40% through optimization",
+      "Collaborated with cross-functional teams to deliver on time"
+    ],
+    "tech": ["React", "Node.js", "MongoDB", "HTML", "CSS", "JavaScript"]
+  },
+  {
+    "title": "Web Developer",
+    "company": "(Your Company Name or Freelance)",
+    "duration": "timeline of your experience if any (e.g., 2022 - Present)",
+    "description": "Creating custom websites and web applications for small businesses and startups. Specializing in frontend optimization and responsive design.",
+    "achievements": [
+      "Delivered 5+ responsive websites with excellent user experience",
+      "Specialized in frontend optimization and SEO best practices",
+      "Maintained 100% client satisfaction rate with timely delivery",
+      "Incorporated modern design patterns and accessibility standards"
+    ],
+    "tech": ["HTML", "CSS", "JavaScript", "React", "Responsive Design"]
+  }
+]

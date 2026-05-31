@@ -203,6 +203,12 @@ fetch("data/skills.json")
   }
 );
 
+emailInput.addEventListener("input", () => {
+  if (!emailInput.validity.valid) {
+    emailError.textContent = "Enter a valid email address";
+  }
+});
+
 fetch("data/projects.json")
   .then(res => res.json())
   .then(data => {
@@ -255,4 +261,32 @@ document.getElementById("contact-form").addEventListener("submit", function (e) 
       btn.textContent = "Send Message";
       btn.disabled = false;
     });
+});
+submitBtn.innerHTML = "Sending...";
+submitBtn.disabled = true;
+
+const form = document.getElementById("contact-form");
+const status = document.getElementById("form-status");
+const submitBtn = document.getElementById("submitBtn");
+
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  submitBtn.disabled = true;
+  submitBtn.innerHTML = "Sending...";
+
+  try {
+    // EmailJS logic here
+
+    status.textContent = "✅ Message sent successfully!";
+    status.style.color = "#22c55e";
+
+    form.reset();
+  } catch (error) {
+    status.textContent = "❌ Failed to send message.";
+    status.style.color = "#ef4444";
+  }
+
+  submitBtn.disabled = false;
+  submitBtn.innerHTML = "Send Message";
 });

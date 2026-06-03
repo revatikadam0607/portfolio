@@ -1487,3 +1487,13 @@ body.light-theme .hero-social a {
 body.light-theme .hero-social a:hover .social-icon {
   color: #ffffff;
 }
+
+
+.footer {
+  text-align: center;
+  padding: 2rem 0;
+}
+
+.footer p {
+  margin: 0.3rem 0;
+}

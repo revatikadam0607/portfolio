@@ -934,6 +934,52 @@ form button:disabled {
   transform: none;
 }
 
+/* ── SCROLL TO TOP BUTTON ── */
+#scrollTopBtn {
+  position: fixed;
+  right: 30px;
+  bottom: 110px;       
+  width: 50px;         
+  height: 50px;
+  border: none;
+  border-radius: 50%;
+  background: var(--primary);
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+  z-index: 9999;
+  box-shadow: 0 4px 15px color-mix(in srgb, var(--primary) 40%, transparent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#scrollTopBtn.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+#scrollTopBtn:hover {
+  transform: translateY(-3px) scale(1.12);
+  box-shadow: 0 8px 25px color-mix(in srgb, var(--primary) 55%, transparent);
+}
+
+#scrollTopBtn span {
+  display: inline-block;
+  transition: transform 0.3s ease;
+  line-height: 1;
+}
+
+#scrollTopBtn:hover span {
+  transform: scale(1.3) translateY(-1px);  
+}
+
 /* ── SETTINGS ── */
 .settings {
   position: fixed;
@@ -1110,6 +1156,14 @@ form button:disabled {
   #projects-container { grid-template-columns: 1fr; }
 
   .contact-grid { grid-template-columns: 1fr; gap: 32px; }
+
+  #scrollTopBtn {
+    width: 44px;
+    height: 44px;
+    font-size: 20px;
+    right: 25px;
+    bottom: 98px;
+  }
 
   .settings { bottom: 16px; right: 16px; }
 

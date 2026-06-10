@@ -51,8 +51,11 @@
 
 /* ── Active nav link style ────────────────────────────────────────────── */
 .nav-links li.nav-active {
-  color: var(--primary);
-  border-bottom: 2px solid var(--primary);
-  padding-bottom: 2px;
-  font-weight: 600;
+  color: var(--primary) !important;
+  background: transparent !important;
+  font-weight: 700;
+  box-shadow: none !important;
+}
+.nav-links li.nav-active::after {
+  width: 100% !important;
 }

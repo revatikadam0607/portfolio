@@ -59,13 +59,7 @@ document.addEventListener("mousemove", e => {
   setTimeout(() => s.remove(), 100);
 });
 
-// Hamburger toggle
-function toggleNavbar() {
-  const links = document.getElementById("navLinks");
-  if (window.innerWidth <= 768) {
-    links.classList.toggle("show");
-  }
-}
+// Navigation handles toggleNavbar
 const skillIcons = {
   "React": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
   "Node.js": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
@@ -261,4 +255,22 @@ document.getElementById("contact-form").addEventListener("submit", function (e) 
       btn.textContent = "Send Message";
       btn.disabled = false;
     });
+});
+
+// ── SCROLL TO TOP BUTTON ──
+const scrollTopBtn = document.getElementById("scrollTopBtn");
+
+window.addEventListener("scroll", () => {
+  if (window.scrollY > 300) {
+    scrollTopBtn.classList.add("show");
+  } else {
+    scrollTopBtn.classList.remove("show");
+  }
+});
+
+scrollTopBtn.addEventListener("click", () => {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
 });

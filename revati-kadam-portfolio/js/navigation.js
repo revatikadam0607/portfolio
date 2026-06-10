@@ -58,11 +58,36 @@ function initSectionAnimations() {
   document.querySelectorAll(".section").forEach(sec => observer.observe(sec));
 }
 
-// ── Toggle hamburger menu ──────────────────────────────────────────────────
+// ── Toggle hamburger menu (mobile only) ────────────────────────────────────
 function toggleNavbar() {
+  if (window.innerWidth > 768) return;
   const nav = document.getElementById("navLinks");
-  nav.classList.toggle("show");
+  if (nav) nav.classList.toggle("show");
 }
+
+// ── Close hamburger on click outside or on window resize ──────────────────
+document.addEventListener("click", (e) => {
+  const navLinks = document.getElementById("navLinks");
+  const hamburger = document.querySelector(".hamburger");
+  if (!navLinks || !hamburger) return;
+  
+  if (navLinks.classList.contains("show")) {
+    // If click is not inside the nav list and not on the hamburger button, close it
+    if (!navLinks.contains(e.target) && !hamburger.contains(e.target)) {
+      navLinks.classList.remove("show");
+    }
+  }
+});
+
+window.addEventListener("resize", () => {
+  // If window resized to desktop (>768px), automatically clean up the mobile dropdown state
+  if (window.innerWidth > 768) {
+    const navLinks = document.getElementById("navLinks");
+    if (navLinks && navLinks.classList.contains("show")) {
+      navLinks.classList.remove("show");
+    }
+  }
+});
 
 // ── Init on DOM ready ──────────────────────────────────────────────────────
 document.addEventListener("DOMContentLoaded", () => {

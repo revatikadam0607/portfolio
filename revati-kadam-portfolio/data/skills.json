@@ -1,107 +1,88 @@
 {
   "Frontend": [
     {
-      "name": "React",
-      "level": "Advanced"
+      "name": "React"
     },
     {
-      "name": "HTML",
-      "level": "Advanced"
+      "name": "HTML"
     },
     {
-      "name": "CSS",
-      "level": "Advanced"
+      "name": "CSS"
     },
     {
-      "name": "JavaScript",
-      "level": "Intermediate"
+      "name": "JavaScript"
     },
     {
-      "name": "Tailwind CSS",
-      "level": "Intermediate"
+      "name": "Tailwind CSS"
     },
     {
-      "name": "Bootstrap",
-      "level": "Intermediate"
+      "name": "Bootstrap"
     }
   ],
 
   "Backend": [
     {
-      "name": "Node.js",
-      "level": "Intermediate"
+      "name": "Node.js"
     },
     {
-      "name": "Express.js",
-      "level": "Intermediate"
+      "name": "Express.js"
     },
     {
-      "name": "MongoDB",
-      "level": "Intermediate"
+      "name": "MongoDB"
     },
     {
-      "name": "SQL",
-      "level": "Intermediate"
+      "name": "SQL"
     }
   ],
 
   "Programming Languages": [
     {
-      "name": "Java",
-      "level": "Advanced"
+      "name": "Java"
     },
     {
-      "name": "JavaScript",
-      "level": "Intermediate"
+      "name": "JavaScript"
     }
   ],
 
   "Core Computer Science": [
     {
-      "name": "Operating Systems",
-      "level": "Intermediate"
+      "name": "Operating Systems"
     },
     {
-      "name": "Database Management Systems",
-      "level": "Intermediate"
+      "name": "Database Management Systems"
     },
     {
-      "name": "Computer Networks",
-      "level": "Intermediate"
+      "name": "Computer Networks"
     },
     {
-      "name": "Object-Oriented Programming",
-      "level": "Advanced"
+      "name": "Object-Oriented Programming"
     }
   ],
 
   "Tools & Platforms": [
     {
-      "name": "Git",
-      "level": "Intermediate"
+      "name": "Git"
     },
     {
-      "name": "GitHub",
-      "level": "Intermediate"
+      "name": "GitHub"
     },
     {
-      "name": "VS Code",
-      "level": "Advanced"
+      "name": "VS Code"
     },
     {
-      "name": "Netlify",
-      "level": "Intermediate"
+      "name": "Netlify"
     }
   ],
 
   "Currently Learning": [
-    {
-      "name": "Docker",
-      "level": "Beginner"
+     {
+    "name": "Generative AI"
     },
     {
-      "name": "AWS",
-      "level": "Beginner"
+      "name": "Docker"
+    },
+    {
+      "name": "AWS"
     }
   ]
 }

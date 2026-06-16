@@ -80,6 +80,7 @@ const skillIcons = {
   "GitHub": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg",
   "VS Code": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg",
   "Netlify": "https://www.vectorlogo.zone/logos/netlify/netlify-icon.svg",
+  "Generative AI": "https://img.icons8.com/fluency/96/artificial-intelligence.png",
   "Docker": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg",
   "AWS": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg",
 };

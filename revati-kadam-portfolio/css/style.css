@@ -25,6 +25,7 @@ body {
   color: var(--text);
   line-height: 1.7;
   overflow-x: hidden;
+  caret-color: transparent;
 }
 
 /* Custom Scrollbar */
@@ -882,10 +883,12 @@ body {
   display: flex;
   flex-direction: column;
   gap: 14px;
+  
 }
 
 form input,
 form textarea {
+  caret-color: auto;
   width: 100%;
   padding: 16px 20px;
   border-radius: 12px;

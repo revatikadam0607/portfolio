@@ -71,20 +71,29 @@ fetch("data/skills.json")
 fetch("data/projects.json")
   .then(res => res.json())
   .then(data => {
-    const container = document.getElementById("projects-container");
-
-    data.forEach(project => {
-      const div = document.createElement("div");
-
-      div.innerHTML = `
-        <h3>${project.name}</h3>
-        <img src="${project.image}" width="300">
-        <br>
-        <a href="${project.live}">Live</a> |
-        <a href="${project.github}">GitHub</a>
+    const c = document.getElementById("projects-container");
+    c.innerHTML = "";
+    data.forEach(p => {
+      const d = document.createElement("div");
+      d.className = "project-card";
+      const techTags = (p.tech || []).map(t => `<span class="tech-tag">${t}</span>`).join("");
+      d.innerHTML = `
+        <div class="project-thumb">
+          <img src="${p.image}" alt="${p.name}" onerror="this.parentElement.style.background='#1e3a5f'; this.style.display='none'">
+        </div>
+        <div class="project-info">
+          <h3>${p.name}</h3>
+          <p>${p.description || ""}</p>
+          <div class="tech-tags">${techTags}</div>
+          <div class="project-links">
+            <a href="${p.live}" target="_blank">Live ↗</a>
+            <a href="${p.github}" target="_blank">GitHub ↗</a>
+          </div>
+        </div>
       `;
-
-      container.appendChild(div);
+      c.appendChild(d);
     });
+  })
+  .catch(() => {
+    document.getElementById("projects-container").innerHTML = "<p>Could not load projects.</p>";
   });
-  

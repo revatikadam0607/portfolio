@@ -1241,6 +1241,32 @@ form button:disabled {
     gap: 32px;
   }
 }
+
+@media(max-width:480px){
+  .hero-text h1{font-size: clamp(30px, 5vw, 60px);}
+  .about-left{
+    padding: 8px 16px;
+    box-shadow: 0px 0px 3px 1px var(--primary);
+    border-radius: 12px;
+    text-align: center;
+  }
+  .about-left p{text-align: left;}
+  #skills{text-align: center;}
+  #projects{
+    text-align: center;
+    margin-top: 5%;
+  }
+  section {padding: 44px 18px !important;}
+}
+@media(max-width:390px){
+  .hero-content{margin-top: 10%;}
+  #skills-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)) !important;
+    gap: 16px;
+    padding: 8px 16px;
+  }
+}
 /* ══════════════════════════════════════════
    LIGHT THEME OVERRIDES
    Applied via body.light-theme class

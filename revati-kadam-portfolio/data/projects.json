@@ -1,0 +1,21 @@
+
+[
+  {
+    "name": "WorkPulse — Intelligent Employee Operations Platform",
+    "image": "assets/images/project 1.png",
+    "description": "A full-featured employee tracking portal with authentication, dashboards, and real-time data management.",
+    "tech": ["HTML", "CSS", "JavaScript", "Node.js"],
+    "live": "https://sca-employee-portal.netlify.app/",
+    "github": "https://github.com/revatikadam0607/SCA-portal"
+  },
+
+  {
+    "name": "ExamVault – Centralized Previous Year Question Paper Management System",
+    "image": "assets/images/project 2.png",
+    "description": "Built an AI-powered Question Paper Portal that streamlines academic resource management with smart search, feedback integration, and scalable architecture for enhanced student productivity.",
+    "tech": ["HTML", "CSS", "JavaScript", "EmailJS"],
+    "live": "https://diet-pyqs-portal.netlify.app/",
+    "github": "https://github.com/revatikadam0607/question-paper-portal"
+  }
+]
+

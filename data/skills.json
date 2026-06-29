@@ -1,0 +1,88 @@
+{
+  "Frontend": [
+    {
+      "name": "React"
+    },
+    {
+      "name": "HTML"
+    },
+    {
+      "name": "CSS"
+    },
+    {
+      "name": "JavaScript"
+    },
+    {
+      "name": "Tailwind CSS"
+    },
+    {
+      "name": "Bootstrap"
+    }
+  ],
+
+  "Backend": [
+    {
+      "name": "Node.js"
+    },
+    {
+      "name": "Express.js"
+    },
+    {
+      "name": "MongoDB"
+    },
+    {
+      "name": "SQL"
+    }
+  ],
+
+  "Programming Languages": [
+    {
+      "name": "Java"
+    },
+    {
+      "name": "JavaScript"
+    }
+  ],
+
+  "Core Computer Science": [
+    {
+      "name": "Operating Systems"
+    },
+    {
+      "name": "Database Management Systems"
+    },
+    {
+      "name": "Computer Networks"
+    },
+    {
+      "name": "Object-Oriented Programming"
+    }
+  ],
+
+  "Tools & Platforms": [
+    {
+      "name": "Git"
+    },
+    {
+      "name": "GitHub"
+    },
+    {
+      "name": "VS Code"
+    },
+    {
+      "name": "Netlify"
+    }
+  ],
+
+  "Currently Learning": [
+     {
+    "name": "Generative AI"
+    },
+    {
+      "name": "Docker"
+    },
+    {
+      "name": "AWS"
+    }
+  ]
+}

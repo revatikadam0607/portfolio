@@ -1,0 +1,49 @@
+
+[
+  {
+    "name": "Nestlé E-learning 2026",
+    "image": "assets/images/certification 1.png",
+    "description": "Successfully completed Nestlé E-learning 2026 | Resilience, gaining practical knowledge of resilience, adaptability, emotional intelligence, stress management, and maintaining productivity in dynamic professional environments. Developed strategies to overcome challenges, embrace continuous learning, and build a growth mindset essential for personal and professional success.",
+    "skills": [
+  "Resilience",
+  "Adaptability",
+  "Professional Development"
+]
+  },
+
+  {
+    "name": "Spoken English and Communication",
+    "image": "assets/images/certification 2.png",
+    "description": "Completed the 15-day Intensive Spoken English & Communication Skills Bootcamp at SpeakUp Academy. Grateful for the learning experience and growth in communication skills. Looking forward to applying these skills with more confidence every day.",
+    "skills": [
+  "Spoken English",
+  "Communication Skills",
+  "Public Speaking",
+  "Presentation Skills",
+  "Active Listening",
+  "Confidence Building",
+  "Professional Communication",
+  "Verbal Communication",
+  "Team Collaboration"
+]
+  },
+
+  {
+    "name": "Alpha(DSA with Java) from Apna College",
+    "image": "assets/images/certification 3.png",
+    "description": "Successfully completed the Alpha (DSA with Java) program by Apna College, building a strong foundation in Data Structures, Algorithms, and problem-solving. Gained hands-on experience with algorithmic thinking, complexity analysis, and implementing efficient solutions in Java while developing a structured approach to technical interview preparation.",
+    "skills": [
+  "Java",
+  "Data Structures",
+  "Algorithms",
+  "Object-Oriented Programming (OOP)",
+  "Problem Solving",
+  "Time Complexity Analysis",
+  "Space Complexity Analysis",
+  "Recursion",
+  "Coding Interview Preparation",
+  "Logical Thinking"
+]
+  }
+]
+

@@ -16,6 +16,31 @@
     "tech": ["HTML", "CSS", "JavaScript", "EmailJS"],
     "live": "https://diet-pyqs-portal.netlify.app/",
     "github": "https://github.com/revatikadam0607/question-paper-portal"
-  }
+  },
+
+   {
+  "name": "FlexNav - Animated Sidebar Navigation",
+  "image": "assets/images/project 3.png",
+  "description": "Designed a modern animated sidebar navigation interface with smooth transitions, responsive layout, and interactive navigation elements to enhance user experience.",
+  "tech": ["HTML", "CSS", "JavaScript"],
+  "live": "https://flexnav-animated-sidebar.netlify.app/",
+  "github": "https://github.com/revatikadam0607/Animated-Sidebar-Navigation-HTML-CSS"
+},
+{
+  "name": "NovaSpark Landing Page",
+  "image": "assets/images/project 4.png",
+  "description": "Developed a visually appealing and fully responsive startup landing page featuring modern UI components, engaging animations, and optimized layouts for an enhanced user experience.",
+  "tech": ["HTML", "CSS", "JavaScript"],
+  "live": "https://novaspark-landing-page.netlify.app/",
+  "github": "https://github.com/revatikadam0607/NovaSpark-Landing-Page"
+},
+{
+  "name": "CalcPro",
+  "image": "assets/images/project 5.png",
+  "description": "Built a responsive calculator application with an intuitive interface, real-time calculations, keyboard support, and clean UI to deliver a seamless user experience.",
+  "tech": ["HTML", "CSS", "JavaScript"],
+  "live": "https://calcpro-calculator.netlify.app/",
+  "github": "https://github.com/revatikadam0607/CalcPro"
+}
 ]
 

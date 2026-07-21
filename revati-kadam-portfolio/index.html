@@ -12,8 +12,13 @@
   
 
 <div id="scroll-progress"></div>
-
-<nav class="navbar">
+<div class="cursor-reticle">
+  <span class="corner tl"></span>
+  <span class="corner tr"></span>
+  <span class="corner bl"></span>
+  <span class="corner br"></span>
+  <span class="cursor-center"></span>
+</div><nav class="navbar">
   <div class="logo">Revati Kadam</div>
   <div class="hamburger" onclick="toggleNavbar()">☰</div>
   <ul class="nav-links" id="navLinks">
@@ -23,9 +28,9 @@
     <li onclick="showSection('education'); toggleNavbar()">Education</li>
      <li onclick="showSection('experience'); toggleNavbar()">Experience</li>
     <li onclick="showSection('projects'); toggleNavbar()">Projects</li>
-    <li onclick="showSection('certifications'); toggleNavbar()">Certifications</li>
-    <li onclick="showSection('contact'); toggleNavbar()">Contact</li>
-  </ul>
+<li onclick="showSection('certifications'); toggleNavbar()">Certifications</li>
+    <li onclick="showSection('achievements'); toggleNavbar()">Achievements</li>
+    <li onclick="showSection('contact'); toggleNavbar()">Contact</li>  </ul>
 </nav>
 
 <div class="main">
@@ -36,14 +41,14 @@
         <p class="hello-tag">HELLO!</p>
         <h1>I am Revati Kadam</h1>
         <h2>I am a <span id="typing"></span></h2>
-        <p class="hero-desc">
-          A passionate Computer Science student who loves building clean,
-          responsive web apps and solving real-world problems through code.
-        </p>
-        <div class="hero-btns">
+<p class="hero-desc">
+          Building full-stack web applications with React, Node.js, and JavaScript —
+          focused on clean architecture, scalable systems, and solving real-world
+          problems through code. Continuously growing through open-source
+          contributions and algorithmic problem-solving.
+        </p>        <div class="hero-btns">
           <a href="#projects" onclick="showSection('projects')" class="btn-primary">View Projects</a>
-          <a href="assets/resume/revati-kadam-resume.pdf" download class="btn-outline">Download Resume</a>
-        </div>
+<a href="assets/resume/revati_kadam_resume.pdf" target="_blank" rel="noopener noreferrer" class="btn-outline">View Resume</a>        </div>
         <div class="hero-social">
           <a href="https://github.com/revatikadam0607" target="_blank" aria-label="GitHub">
             <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -76,24 +81,22 @@
     <div class="about-grid">
       <div class="about-left">
         <h2>About</h2>
-        <p>
-          I'm a passionate and driven Computer Science student with a strong interest
-          in Web Development, Software Engineering, and problem-solving. I enjoy building
-          clean, responsive, and user-friendly web applications while continuously improving
-          my skills in technologies like HTML, CSS, JavaScript, and backend development.
-          Alongside development, I actively practice Data Structures and Algorithms to
-          strengthen my logical thinking and coding abilities.
-        </p>
+<p>
+          I'm a Software Engineer focused on building full-stack web applications —
+          from responsive React interfaces to Node.js and Express backends connected
+          to real databases. I care about clean architecture, maintainable code, and
+          solving problems efficiently rather than just making things work. I actively
+          contribute to open-source projects and sharpen my problem-solving skills
+          through Data Structures & Algorithms practice.
+        </p>        
         <div class="about-tags">
-          <span class="about-tag">Web Development</span>
-          <span class="about-tag">Problem Solving</span>
+<span class="about-tag">Full-Stack Development</span>          <span class="about-tag">Problem Solving</span>
           <span class="about-tag">DSA</span>
           <span class="about-tag">Open Source</span>
         </div>
-        <a href="assets/resume/revati_kadam_resume.pdf" download class="resume-btn">
-          ↓ Download Resume
-        </a>
-      </div>
+<a href="assets/resume/revati_kadam_resume.pdf" target="_blank" rel="noopener noreferrer" class="resume-btn">
+          View Resume ↗
+        </a>      </div>
       <div class="about-right">
         <div class="stat-card"><div class="stat-num">15+</div><div class="stat-lbl">Skills Learned</div></div>
         <div class="stat-card"><div class="stat-num">2+</div><div class="stat-lbl">Projects Built</div></div>
@@ -257,6 +260,60 @@
     <div id="certifications-container"></div>
   </section>
 
+<section id="achievements" class="section">
+    <h2>Achievements</h2>
+    <div class="experience-container">
+
+      <div class="experience-card">
+        <div class="exp-timeline-dot"></div>
+        <div class="exp-card-inner">
+          <div class="exp-card-header">
+            <div>
+              <h3>Elite Coders Summer of Code 2026</h3>
+            </div>
+            <span class="exp-year">2026</span>
+          </div>
+          <p>Ranked 11th globally among 3,500+ contributors — placing in the top 1% of all participants.</p>
+          <div class="exp-meta">
+            <span class="exp-badge">🏆 Top 1% Globally</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="experience-card">
+        <div class="exp-timeline-dot"></div>
+        <div class="exp-card-inner">
+          <div class="exp-card-header">
+            <div>
+              <h3>LeetCode Weekly Contest 507</h3>
+            </div>
+            <span class="exp-year">2026</span>
+          </div>
+          <p>Ranked 113th out of 37,985 participants — placing in the top 1% of the contest.</p>
+          <div class="exp-meta">
+            <span class="exp-badge">🧠 Competitive Programming</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="experience-card">
+        <div class="exp-timeline-dot"></div>
+        <div class="exp-card-inner">
+          <div class="exp-card-header">
+            <div>
+              <h3>Peak LeetCode Contest Rating</h3>
+            </div>
+            <span class="exp-year">2026</span>
+          </div>
+          <p>Achieved a 1700+ peak contest rating, reflecting strong Data Structures & Algorithms and problem-solving skills.</p>
+          <div class="exp-meta">
+            <span class="exp-badge">📈 1700+ Rating</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
   <section id="contact" class="section">
     <h2>Contact Me</h2>
     <div class="contact-grid">

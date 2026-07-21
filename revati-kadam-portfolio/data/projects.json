@@ -6,7 +6,17 @@
     "description": "A full-featured employee tracking portal with authentication, dashboards, and real-time data management.",
     "tech": ["HTML", "CSS", "JavaScript", "Node.js"],
     "live": "https://sca-employee-portal.netlify.app/",
-    "github": "https://github.com/revatikadam0607/SCA-portal"
+    "github": "https://github.com/revatikadam0607/SCA-portal",
+    "problem": "FILL IN — what real problem does this solve? e.g. 'Manual employee tracking via spreadsheets was slow and error-prone.'",
+    "features": [
+      "FILL IN — e.g. Secure login with session-based authentication",
+      "FILL IN — e.g. Real-time dashboard showing employee status",
+      "FILL IN — e.g. Admin panel to manage employee records"
+    ],
+    "architecture": ["HTML/CSS Frontend", "Node.js Backend", "FILL IN — database, if any"],
+    "decisions": "FILL IN — why Node.js? why this structure?",
+    "challenges": "FILL IN — the hardest technical problem you solved here",
+    "tradeoffs": "FILL IN — what did you simplify for time/scope? e.g. 'No automated tests yet.'"
   },
 
   {
@@ -15,7 +25,17 @@
     "description": "Built an AI-powered Question Paper Portal that streamlines academic resource management with smart search, feedback integration, and scalable architecture for enhanced student productivity.",
     "tech": ["HTML", "CSS", "JavaScript", "EmailJS"],
     "live": "https://diet-pyqs-portal.netlify.app/",
-    "github": "https://github.com/revatikadam0607/question-paper-portal"
+    "github": "https://github.com/revatikadam0607/question-paper-portal",
+    "problem": "Students often struggle to find previous year question papers scattered across different sources, making exam prep inefficient. ExamVault centralizes these into one searchable portal.",
+    "features": [
+      "Smart search to quickly locate previous year papers by subject or year",
+      "Feedback system (via EmailJS) so students can report issues or request missing papers",
+      "FILL IN — is there a category/filter system? Upload feature? Anything else real users see?"
+    ],
+    "architecture": ["HTML/CSS/JS Frontend", "EmailJS (feedback & notifications)", "FILL IN — how are the actual papers stored/served? Static files? A database?"],
+    "decisions": "FILL IN — why EmailJS instead of a backend server? Was it a deliberate choice to avoid running a database for a smaller-scope tool?",
+    "challenges": "FILL IN — what was genuinely hard here? e.g. organizing/searching many files on the frontend without a database?",
+    "tradeoffs": "FILL IN — e.g. no backend means simpler, free deployment, but less flexibility if the paper library grows very large."
   },
 
    {
@@ -41,6 +61,36 @@
   "tech": ["HTML", "CSS", "JavaScript"],
   "live": "https://calcpro-calculator.netlify.app/",
   "github": "https://github.com/revatikadam0607/CalcPro"
-}
+},
+{
+    "name": "MomentumForge — Adaptive Study Progress Tracker",
+    "image": "assets/images/project 6.png",
+    "description": "A self-built productivity system that tracks daily, weekly, and monthly study goals with real-time progress, XP-based gamification, and automatic rescheduling for missed tasks.",
+    "tech": ["HTML", "CSS", "JavaScript", "Firebase Authentication"],
+    "live": "FILL IN — your deployed live link",
+    "github": "FILL IN — your GitHub repo link",
+    "problem": "Study plans often break down the moment a task is missed — progress becomes hard to track across daily, weekly, and monthly goals, and missed work quietly falls through the cracks. MomentumForge keeps every view in sync in real time and automatically resurfaces missed tasks instead of letting them disappear.",
+    "features": [
+      "Interconnected Daily, Weekly, and Monthly views — completing one task instantly updates all three",
+      "One-click task completion with XP rewards and streak tracking",
+      "Live dashboard showing today's, weekly, monthly, and overall completion percentages, calculated in real time",
+      "Auto-rescheduling — missed tasks roll forward automatically and are flagged with the exact number of days overdue",
+      "Custom-built bar and donut charts on the stats page, written from scratch in vanilla JS with no charting libraries",
+      "Difficulty alerts that auto-flag heavier topics (e.g. Recursion, Graphs, DP, Trees) and allocate extra prep time",
+      "Command palette (Ctrl/Cmd+K) for instant search across the entire roadmap",
+      "Branded print/PDF export that generates a clean, letterhead-style document instead of a raw screen printout",
+      "Light/Dark mode with an animated toggle",
+      "Firebase Authentication — email/password and Google sign-in, with a 'Remember me' option",
+      "Local data persistence with JSON backup/restore",
+      "Fully responsive across mobile, tablet, and desktop"
+    ],
+    "architecture": ["Vanilla JS Frontend", "Firebase Authentication", "Browser localStorage (data persistence)"],
+    "decisions": "Chose vanilla JavaScript over a framework to keep full control over performance and to hand-build the charting and command-palette logic myself rather than relying on libraries. Added Firebase Authentication specifically for secure login/signup, including Google sign-in, without having to stand up a full custom backend just for identity.",
+    "challenges": "Building the bar and donut charts from scratch in vanilla JS — including responsive scaling and real-time updates as tasks are completed — without any charting library. Also designing the auto-rescheduling logic so a missed task rolls forward correctly and reports an accurate overdue count without duplicating or losing data.",
+    "tradeoffs": "Data lives in the browser's localStorage rather than a cloud database, so progress doesn't automatically sync across devices — JSON backup/restore is the current workaround. Firebase is used only for authentication, which keeps the app lightweight, but it means logging in on a new device doesn't yet bring your saved data with it.",
+      "live": "https://chttps://momentumforge.netlify.app/",
+    "github": "https://github.com/revatikadam0607/MomentumForge"
+
+  }
 ]
 

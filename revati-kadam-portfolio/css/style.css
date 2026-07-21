@@ -1405,3 +1405,119 @@ body.light-theme .exp-card-inner p   { color: rgba(15,23,42,0.6); }
 /* ── FOOTER ── */
 .footer { text-align: center; padding: 2rem 0; }
 .footer p { margin: 0.3rem 0; }
+
+/* ── PROJECT DETAILS (Phase 2) ── */
+.details-toggle {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+}
+.details-toggle:hover {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #fff;
+}
+
+.project-details {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+}
+.project-details h4 {
+  color: var(--primary);
+  font-size: 14px;
+  font-weight: 700;
+  margin: 16px 0 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.project-details h4:first-child { margin-top: 0; }
+.project-details p {
+  font-size: 14px;
+  color: var(--text-muted-1);
+  line-height: 1.7;
+}
+
+.feature-list {
+  padding-left: 20px;
+  font-size: 14px;
+  color: var(--text-muted-1);
+  line-height: 1.8;
+}
+
+.arch-flow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+.arch-step {
+  background: color-mix(in srgb, var(--primary) 8%, transparent);
+  color: var(--primary);
+  border: 1px solid color-mix(in srgb, var(--primary) 20%, transparent);
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+}
+.arch-arrow {
+  color: var(--text-muted-1);
+  font-weight: 700;
+}
+
+/* ── CUSTOM CURSOR ── */
+@media (hover: hover) and (pointer: fine) {
+  body { cursor: none; }
+  a, button, .skill-tab, .details-toggle { cursor: none; }
+
+  .cursor-reticle {
+    position: fixed;
+    top: 0; left: 0;
+    width: 34px; height: 34px;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%) rotate(0deg);
+    animation: reticleSpin 10s linear infinite;
+    transition: width 0.25s ease, height 0.25s ease;
+  }
+
+  .cursor-reticle.cursor-active {
+    width: 48px; height: 48px;
+    animation-play-state: paused;
+  }
+
+  .corner {
+    position: absolute;
+    width: 10px; height: 10px;
+    border: 2px solid var(--primary);
+    transition: border-color 0.2s ease, background 0.2s ease;
+  }
+  .corner.tl { top: 0; left: 0; border-right: none; border-bottom: none; }
+  .corner.tr { top: 0; right: 0; border-left: none; border-bottom: none; }
+  .corner.bl { bottom: 0; left: 0; border-right: none; border-top: none; }
+  .corner.br { bottom: 0; right: 0; border-left: none; border-top: none; }
+
+  .cursor-reticle.cursor-active .corner {
+    background: color-mix(in srgb, var(--primary) 25%, transparent);
+  }
+
+  .cursor-center {
+    position: absolute;
+    top: 50%; left: 50%;
+    width: 4px; height: 4px;
+    background: var(--primary);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  @keyframes reticleSpin {
+    from { transform: translate(-50%, -50%) rotate(0deg); }
+    to   { transform: translate(-50%, -50%) rotate(360deg); }
+  }
+}

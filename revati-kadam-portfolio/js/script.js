@@ -74,16 +74,23 @@ document.addEventListener("click", function(e) {
   }
 });
 
-// Load projects
+/// Load projects
 fetch("data/projects.json")
   .then(res => res.json())
   .then(data => {
     const c = document.getElementById("projects-container");
     c.innerHTML = "";
-    data.forEach(p => {
+    data.forEach((p, index) => {
       const d = document.createElement("div");
       d.className = "project-card";
+
       const techTags = (p.tech || []).map(t => `<span class="tech-tag">${t}</span>`).join("");
+      const featuresList = (p.features || []).map(f => `<li>${f}</li>`).join("");
+      const archFlow = (p.architecture || [])
+        .map(step => `<span class="arch-step">${step}</span>`)
+        .join('<span class="arch-arrow">→</span>');
+      const detailsId = `project-details-${index}`;
+
       d.innerHTML = `
         <div class="project-thumb">
           <img src="${p.image}" alt="${p.name}" onerror="this.parentElement.style.background='#1e3a5f'; this.style.display='none'">
@@ -93,8 +100,17 @@ fetch("data/projects.json")
           <p>${p.description || ""}</p>
           <div class="tech-tags">${techTags}</div>
           <div class="project-links">
-            <a href="${p.live}" target="_blank">Live ↗</a>
-            <a href="${p.github}" target="_blank">GitHub ↗</a>
+            <a href="${p.live}" target="_blank" rel="noopener noreferrer">Live ↗</a>
+            <a href="${p.github}" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+            <button class="details-toggle" onclick="toggleProjectDetails('${detailsId}', this)">Show details ▾</button>
+          </div>
+          <div class="project-details" id="${detailsId}" style="display:none;">
+            ${p.problem ? `<h4>Problem Statement</h4><p>${p.problem}</p>` : ""}
+            ${featuresList ? `<h4>Key Features</h4><ul class="feature-list">${featuresList}</ul>` : ""}
+            ${archFlow ? `<h4>Architecture</h4><div class="arch-flow">${archFlow}</div>` : ""}
+            ${p.decisions ? `<h4>Design Decisions</h4><p>${p.decisions}</p>` : ""}
+            ${p.challenges ? `<h4>Technical Challenges</h4><p>${p.challenges}</p>` : ""}
+            ${p.tradeoffs ? `<h4>Trade-offs</h4><p>${p.tradeoffs}</p>` : ""}
           </div>
         </div>
       `;
@@ -104,6 +120,14 @@ fetch("data/projects.json")
   .catch(() => {
     document.getElementById("projects-container").innerHTML = "<p>Could not load projects.</p>";
   });
+
+// Toggle project details open/closed
+function toggleProjectDetails(id, btn) {
+  const el = document.getElementById(id);
+  const isHidden = el.style.display === "none";
+  el.style.display = isHidden ? "block" : "none";
+  btn.textContent = isHidden ? "Hide details ▴" : "Show details ▾";
+}
 
 // Load certifications — FIXED (was using wrong variable name before)
 fetch("data/certifications.json")

@@ -5,7 +5,7 @@
 })();
 
 // ── TYPING ANIMATION ──
-const roles = ["Web Developer", "Programmer", "Problem Solver", "Website Designer", "Tech Enthusiast"];
+const roles = ["Software Engineer", "Full-Stack Developer", "Problem Solver", "Open-Source Contributor"];
 let i = 0, j = 0, del = false;
 
 function type() {
@@ -109,12 +109,17 @@ const observer = new IntersectionObserver(
 
 sections.forEach(sec => observer.observe(sec));
 
-// ── SPARK CURSOR EFFECT ──
-document.addEventListener("mousemove", e => {
-  const s = document.createElement("div");
-  s.className = "spark";
-  s.style.left = e.pageX + "px";
-  s.style.top = e.pageY + "px";
-  document.body.appendChild(s);
-  setTimeout(() => s.remove(), 100);
-});
+// ── CUSTOM CURSOR ──
+const cursorReticle = document.querySelector(".cursor-reticle");
+
+if (cursorReticle) {
+  window.addEventListener("mousemove", e => {
+    cursorReticle.style.left = e.clientX + "px";
+    cursorReticle.style.top = e.clientY + "px";
+  });
+
+  document.querySelectorAll("a, button, .skill-tab, .details-toggle").forEach(el => {
+    el.addEventListener("mouseenter", () => cursorReticle.classList.add("cursor-active"));
+    el.addEventListener("mouseleave", () => cursorReticle.classList.remove("cursor-active"));
+  });
+}
